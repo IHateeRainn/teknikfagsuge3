@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ctrs24ww00aoh"]
+
+[ext_resource type="Script" uid="uid://bgo3mml46xlkc" path="res://player_skib.gd" id="1_yrqp0"]
+[ext_resource type="Texture2D" uid="uid://c8nkovwbwenqe" path="res://kenney_pirate-pack/PNG/Default size/Ships/ship (5).png" id="2_degwg"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hn12h"]
+bounce = 0.5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hn12h"]
+radius = 9.5
+height = 55.0
+
+[node name="player_skib" type="RigidBody2D" unique_id=805400101 groups=["hitable", "player"]]
+collision_layer = 8
+collision_mask = 5
+physics_material_override = SubResource("PhysicsMaterial_hn12h")
+gravity_scale = 0.0
+angular_damp = 1.0
+constant_force = Vector2(1, 0)
+script = ExtResource("1_yrqp0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1066185099]
+rotation = 3.1415927
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_degwg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1362349179]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("CapsuleShape2D_hn12h")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=600811835]

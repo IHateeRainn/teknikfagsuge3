@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d4e6dgo8hc88k"]
+
+[ext_resource type="Script" uid="uid://yel7goryynji" path="res://sellcard.gd" id="1_eunbg"]
+[ext_resource type="Texture2D" uid="uid://bugiij63ulghf" path="res://icon.svg" id="2_64dhx"]
+
+[node name="sellcard" type="Control" unique_id=1693994859 node_paths=PackedStringArray("card_frame")]
+custom_minimum_size = Vector2(128, 142)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1024.0
+offset_bottom = -506.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eunbg")
+card_frame = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=727486903]
+layout_mode = 0
+offset_right = 119.0
+offset_bottom = 142.0
+texture = ExtResource("2_64dhx")
+
+[node name="label" type="Label" parent="TextureRect" unique_id=686496160]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "hey its me the item
+100 dolar"

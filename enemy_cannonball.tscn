@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dm8ylj4gn0bts"]
+
+[ext_resource type="Script" uid="uid://t24dbiq2c21u" path="res://enemy_cannonball.gd" id="1_q5q8u"]
+[ext_resource type="Texture2D" uid="uid://60ottfl0u2hn" path="res://kenney_pirate-pack/PNG/Default size/Ship parts/cannonBall.png" id="2_u5q22"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rq2k3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rq2k3"]
+radius = 5.0990195
+
+[node name="enemy_cannonball" type="RigidBody2D" unique_id=221128626 groups=["enemy_cannonball"]]
+collision_layer = 16
+collision_mask = 9
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_rq2k3")
+gravity_scale = 0.0
+script = ExtResource("1_q5q8u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=696875006]
+texture = ExtResource("2_u5q22")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=254072800]
+shape = SubResource("CircleShape2D_rq2k3")

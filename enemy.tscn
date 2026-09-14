@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://yu73gnoguins"]
+
+[ext_resource type="Script" uid="uid://d2uyl2y4wh8qi" path="res://enemy.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://c7sttybgf3vka" path="res://kenney_pirate-pack/PNG/Default size/Ships/ship (3).png" id="1_7k104"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hn12h"]
+bounce = 0.5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rq2k3"]
+height = 52.0
+
+[node name="enemy" type="RigidBody2D" unique_id=1055749403 groups=["enemy", "hitable"]]
+collision_layer = 4
+collision_mask = 13
+physics_material_override = SubResource("PhysicsMaterial_hn12h")
+gravity_scale = 0.0
+script = ExtResource("1_4gyqm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1209471762]
+rotation = 3.1415927
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_7k104")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=441485043]
+shape = SubResource("CapsuleShape2D_rq2k3")
+
+[node name="navigation" type="Node2D" parent="." unique_id=1002565232]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="navigation" unique_id=180889351]
+
+[node name="Timer" type="Timer" parent="navigation" unique_id=2089196419]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="navigation/Timer" to="." method="_on_timer_timeout"]
