@@ -13,6 +13,7 @@ var cannonball_damage = 20
 var cannonball_scene = preload("res://cannonball.tscn")
 
 var maxHealth = 100
+@onready var anim = $"../CanvasLayer/pain/AnimationPlayer"
 
 func _ready() -> void:
 	contact_monitor = true
@@ -50,6 +51,7 @@ func _physics_process(delta: float) -> void:
 	for body in get_colliding_bodies():
 		if body.is_in_group("enemy_cannonball"):
 			health -= body.damage
+			anim.play("pain")
 			healthChanged.emit()
 			print(health)
 			if health <= 0:

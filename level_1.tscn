@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bu71doe421ssl" path="res://health_bar.gd" id="5_rka8t"]
 [ext_resource type="Texture2D" uid="uid://dvymxgfgnce48" path="res://healthbarProgress.png" id="6_bjebc"]
 [ext_resource type="Script" uid="uid://bs3bp1y3bopsu" path="res://wave_spawner.gd" id="9_5rr72"]
+[ext_resource type="Texture2D" uid="uid://dvm3ojam6g2se" path="res://kenney_pirate-pack/vignette.png" id="9_gyffv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hn12h"]
 vertices = PackedVector2Array(586, 183, 486, 183, 266, 171, 266, 87, 342, 279, 342, 343, 326, 343, 314, 331, 314, 279, 522, 379, 586, 283, 1645.7109, -511.35156, 1762.2109, 989.2031, 506, 411, -427.52344, -592.6172, 234, 55, 250, 87, 250, 71, 234, 71, 150, 55, 150, 71, 134, 71, 134, 171, 150, 171, 150, 187, 134, 247, 250, 187, 250, 171, 486, 199, 470, 199, 470, 279, 442, 279, 442, 231, 374, 231, 374, 279, 298, 247, 298, 279, 230, 247, 202, 247, 230, 263, 202, 263, 298, 363, 298, 331, 326, 427, 422, 427, 422, 443, -512.4375, 1033.7813, 474, 443, 474, 411, 506, 379, 522, 283, 134, 363)
@@ -318,6 +319,43 @@ terrain_set_0/terrain_0/color = Color(0.699296, 0, 0.3909744, 1)
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_hbghi")
 
+[sub_resource type="Animation" id="Animation_gyffv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1pe0h"]
+resource_name = "pain"
+length = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.049757216, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0.9699662, 0.9699662, 0.9699662, 1), Color(0.9699662, 0.9699662, 0.9699662, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_27bay"]
+_data = {
+&"RESET": SubResource("Animation_gyffv"),
+&"pain": SubResource("Animation_1pe0h")
+}
+
 [node name="Level1" type="Node2D" unique_id=1983700188 groups=["hitable"]]
 script = ExtResource("1_ihfcg")
 
@@ -350,6 +388,18 @@ scale = Vector2(2.1, 2.1)
 texture_under = ExtResource("5_j7kpp")
 texture_progress = ExtResource("6_bjebc")
 script = ExtResource("5_rka8t")
+
+[node name="pain" type="Node" parent="CanvasLayer" unique_id=1613673370]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/pain" unique_id=726562160]
+modulate = Color(1, 1, 1, 0)
+offset_right = 4159.9995
+offset_bottom = 2354.9998
+scale = Vector2(0.208, 0.208)
+texture = ExtResource("9_gyffv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/pain" unique_id=44550942]
+libraries/ = SubResource("AnimationLibrary_27bay")
 
 [node name="WaveSpawner" type="Node2D" parent="." unique_id=1457523767]
 script = ExtResource("9_5rr72")
