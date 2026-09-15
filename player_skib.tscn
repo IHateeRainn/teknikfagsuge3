@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bgo3mml46xlkc" path="res://player_skib.gd" id="1_yrqp0"]
 [ext_resource type="Texture2D" uid="uid://c8nkovwbwenqe" path="res://kenney_pirate-pack/PNG/Default size/Ships/ship (5).png" id="2_degwg"]
+[ext_resource type="Resource" uid="uid://de0tu3qtw2v44" path="res://inventory/player_inventory.tres" id="2_n55ke"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hn12h"]
 bounce = 0.5
@@ -18,6 +19,7 @@ gravity_scale = 0.0
 angular_damp = 1.0
 constant_force = Vector2(1, 0)
 script = ExtResource("1_yrqp0")
+inv = ExtResource("2_n55ke")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1066185099]
 rotation = 3.1415927

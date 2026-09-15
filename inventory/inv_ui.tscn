@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dvo30lfhestkl"]
+
+[ext_resource type="Script" uid="uid://cgslrby2w4t00" path="res://inventory/inv_ui.gd" id="1_f2u1w"]
+[ext_resource type="Texture2D" uid="uid://d4kutkyoolutw" path="res://inventory/inventory-background.png" id="2_w82yi"]
+[ext_resource type="PackedScene" uid="uid://bxnwl86jj1uih" path="res://inventory/Inv_slot.tscn" id="3_dn3an"]
+
+[node name="Inv_Ui" type="Control" unique_id=368499442]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f2u1w")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=345907038]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 64.0
+texture = ExtResource("2_w82yi")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect" unique_id=388648823]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -28.0
+offset_right = 18.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="inv_slot1" parent="NinePatchRect/GridContainer" unique_id=855150416 instance=ExtResource("3_dn3an")]
+layout_mode = 2
+
+[node name="inv_slot2" parent="NinePatchRect/GridContainer" unique_id=120759546 instance=ExtResource("3_dn3an")]
+layout_mode = 2
+
+[node name="inv_slot3" parent="NinePatchRect/GridContainer" unique_id=1855879064 instance=ExtResource("3_dn3an")]
+layout_mode = 2
+
+[node name="inv_slot4" parent="NinePatchRect/GridContainer" unique_id=2116679922 instance=ExtResource("3_dn3an")]
+layout_mode = 2
+
+[node name="inv_slot5" parent="NinePatchRect/GridContainer" unique_id=1343286274 instance=ExtResource("3_dn3an")]
+layout_mode = 2
+
+[node name="inv_slot6" parent="NinePatchRect/GridContainer" unique_id=136551974 instance=ExtResource("3_dn3an")]
+layout_mode = 2

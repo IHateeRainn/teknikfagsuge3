@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+@export var inv: Inv
+
 signal healthChanged
 
 var speed = 100
