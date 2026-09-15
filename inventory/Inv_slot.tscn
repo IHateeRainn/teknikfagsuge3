@@ -12,3 +12,17 @@ scale = Vector2(2, 2)
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1197848471]
 texture = ExtResource("1_kcph2")
 centered = false
+
+[node name="Panel" type="Panel" parent="." unique_id=2145156391]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel" unique_id=660385995]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/CenterContainer" unique_id=618127295]
+centered = false

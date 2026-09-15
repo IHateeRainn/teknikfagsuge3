@@ -7,4 +7,5 @@
 script = ExtResource("2_bfv5h")
 item_name = "Damage_item"
 item_texture = ExtResource("2_3pur4")
+richochet = 1.0
 metadata/_custom_type_script = "uid://wvtegv56n16g"

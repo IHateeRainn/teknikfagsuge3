@@ -24,7 +24,9 @@ func _ready() -> void:
 func shoot():
 	if !reloading:
 		var cannonball = cannonball_scene.instantiate()
-
+		for i in Inv:
+			cannonball.can_richochet += i.richochet
+		
 		cannonball.global_position = position
 		
 		get_tree().current_scene.add_child(cannonball)
