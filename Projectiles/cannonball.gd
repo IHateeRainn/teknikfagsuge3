@@ -1,6 +1,6 @@
 extends RigidBody2D
 var explosion_scene = preload("res://projectiles/animated_sprite_2d.tscn")
-var can_richochet = 1
+var can_richochet = 0
 var lifespan = 7
 
 # Called when the node enters the scene tree for the first time.
@@ -15,7 +15,9 @@ func _physics_process(delta: float) -> void:
 	if lifespan < 0:
 		queue_free()
 	for body in get_colliding_bodies():
-		if body.is_in_group("hitable") and !body.is_in_group("player") and !body.is_in_group("terrain"):
+		if body.is_in_group("terrain") and can_richochet > 0:
+			return
+		if body.is_in_group("hitable") and !body.is_in_group("player"):
 			var explosion = explosion_scene.instantiate()
 			explosion.global_position = global_position
 			explosion.scale = Vector2(0.3,0.3)

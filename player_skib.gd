@@ -24,8 +24,8 @@ func _ready() -> void:
 func shoot():
 	if !reloading:
 		var cannonball = cannonball_scene.instantiate()
-		#for i in player_inventory:
-			#cannonball.can_richochet += i.can_richochet
+		for i in player_inventory.items:
+			cannonball.can_richochet += i.can_richochet
 		cannonball.global_position = position
 		cannonball.rotation = rotation+deg_to_rad(90)
 		cannonball.linear_velocity = Vector2.UP.rotated(cannonball.rotation)*cannonball_speed+linear_velocity
