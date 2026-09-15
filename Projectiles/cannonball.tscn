@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cp6868ep2ylri"]
 
-[ext_resource type="Script" uid="uid://c0i6t1ene1ege" path="res://cannonball.gd" id="1_246s8"]
+[ext_resource type="Script" uid="uid://c0i6t1ene1ege" path="res://Projectiles/cannonball.gd" id="1_246s8"]
 [ext_resource type="Texture2D" uid="uid://60ottfl0u2hn" path="res://kenney_pirate-pack/PNG/Default size/Ship parts/cannonBall.png" id="1_jmdrc"]
+
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rq2k3"]
 
