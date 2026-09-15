@@ -7,4 +7,4 @@ class_name InvItem
 @export var item_texture: Texture2D
 
 @export_category("modifiers")
-@export var richochet: float
+@export var can_richochet: float

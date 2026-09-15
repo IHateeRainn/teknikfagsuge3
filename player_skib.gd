@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var inv: Inv
+@export var player_inventory: Inv
 
 signal healthChanged
 
@@ -24,14 +24,14 @@ func _ready() -> void:
 func shoot():
 	if !reloading:
 		var cannonball = cannonball_scene.instantiate()
-		for i in Inv:
-			cannonball.can_richochet += i.richochet
-		
+		#for i in player_inventory:
+			#cannonball.can_richochet += i.can_richochet
 		cannonball.global_position = position
-		
-		get_tree().current_scene.add_child(cannonball)
 		cannonball.rotation = rotation+deg_to_rad(90)
 		cannonball.linear_velocity = Vector2.UP.rotated(cannonball.rotation)*cannonball_speed+linear_velocity
+		
+		get_tree().current_scene.add_child(cannonball)
+
 		reloading = true
 		await get_tree().create_timer(reload_speed).timeout
 		reloading = false

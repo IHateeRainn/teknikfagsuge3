@@ -19,7 +19,7 @@ gravity_scale = 0.0
 angular_damp = 1.0
 constant_force = Vector2(1, 0)
 script = ExtResource("1_yrqp0")
-player_inventory = ExtResource("2_n55ke")
+player_inv = ExtResource("2_n55ke")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1066185099]
 rotation = 3.1415927
