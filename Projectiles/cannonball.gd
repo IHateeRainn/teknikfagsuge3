@@ -1,5 +1,5 @@
 extends RigidBody2D
-var explosion_scene = preload("res://animated_sprite_2d.tscn")
+var explosion_scene = preload("res://projectiles/animated_sprite_2d.tscn")
 
 var lifespan = 7
 

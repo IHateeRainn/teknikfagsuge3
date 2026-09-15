@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var lifespan = 7
-var explosion_scene = preload("res://animated_sprite_2d.tscn")
+var explosion_scene = preload("res://Projectiles/animated_sprite_2d.tscn")
 var damage = 20
 
 # Called when the node enters the scene tree for the first time.

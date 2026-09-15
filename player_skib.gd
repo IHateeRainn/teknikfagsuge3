@@ -10,7 +10,7 @@ var reload_speed = 0.1
 var reloading = false
 var health = 100
 var cannonball_damage = 20
-var cannonball_scene = preload("res://cannonball.tscn")
+var cannonball_scene = preload("res://Projectiles/cannonball.tscn")
 
 var maxHealth = 100
 @onready var anim = $"../CanvasLayer/pain/AnimationPlayer"

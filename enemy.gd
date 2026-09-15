@@ -4,8 +4,8 @@ extends RigidBody2D
 @onready var level_1 = $".."
 
 
-var explosion_scene = preload("res://animated_sprite_2d.tscn")
-var cannonball_scene = preload("res://enemy_cannonball.tscn")
+var explosion_scene = preload("res://Projectiles/animated_sprite_2d.tscn")
+var cannonball_scene = preload("res://Projectiles/enemy_cannonball.tscn")
 
 
 var health = 100
