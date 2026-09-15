@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c38noaq37askx"]
 
 [ext_resource type="Script" uid="uid://colqtt3oknisn" path="res://level_1.gd" id="1_ihfcg"]
-[ext_resource type="Script" uid="uid://cdh6ucqijsscf" path="res://Game_Manager.gd" id="2_bjebc"]
 [ext_resource type="PackedScene" uid="uid://ctrs24ww00aoh" path="res://player_skib.tscn" id="3_hn12h"]
 [ext_resource type="PackedScene" uid="uid://yu73gnoguins" path="res://enemy.tscn" id="4_ihfcg"]
 [ext_resource type="Texture2D" uid="uid://cuccr803unsq3" path="res://healthbarUnder.png" id="5_j7kpp"]
@@ -51,9 +50,7 @@ _data = {
 [node name="Level1" type="Node2D" unique_id=1983700188 groups=["hitable", "terrain"]]
 script = ExtResource("1_ihfcg")
 
-[node name="Game Manager" type="Node" parent="." unique_id=661145772]
-unique_name_in_owner = true
-script = ExtResource("2_bjebc")
+[node name="Game_manager" type="Node" parent="." unique_id=1098553084]
 
 [node name="player_skib" parent="." unique_id=805400101 instance=ExtResource("3_hn12h")]
 
