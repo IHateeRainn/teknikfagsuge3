@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://c0i6t1ene1ege" path="res://Projectiles/cannonball.gd" id="1_246s8"]
 [ext_resource type="Texture2D" uid="uid://60ottfl0u2hn" path="res://kenney_pirate-pack/PNG/Default size/Ship parts/cannonBall.png" id="1_jmdrc"]
 
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rq2k3"]
+bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rq2k3"]
 radius = 5.0990195
