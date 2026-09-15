@@ -30,6 +30,7 @@ background=""
 hitable=""
 enemy=""
 enemy_cannonball=""
+terrain=""
 
 [physics]
 
