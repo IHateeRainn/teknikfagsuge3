@@ -23,30 +23,23 @@ func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = 10
 
-func shoot():
-	if !reloading:
-		for i in player_inventory.items:
-			sideshot += i.sideshot
-		if sideshot >= 1:
-			sideshot = 1
-			var cannonball = cannonball_scene.instantiate()
-			for i in player_inventory.items:
-				cannonball.can_richochet += i.can_richochet
-				cannonball.damage += i.damage_boost
-			cannonball.global_position = position
-			cannonball.rotation = rotation+deg_to_rad(90)
-			cannonball.linear_velocity = -Vector2.UP.rotated(cannonball.rotation)*cannonball_speed+linear_velocity
-			get_tree().current_scene.add_child(cannonball)
-			
+func fire_cannonball(direction):
 		var cannonball = cannonball_scene.instantiate()
 		for i in player_inventory.items:
 			cannonball.can_richochet += i.can_richochet
 			cannonball.damage += i.damage_boost
+			sideshot += i.sideshot
 		cannonball.global_position = position
 		cannonball.rotation = rotation+deg_to_rad(90)
-		cannonball.linear_velocity = Vector2.UP.rotated(cannonball.rotation)*cannonball_speed+linear_velocity
+		cannonball.linear_velocity = direction*Vector2.UP.rotated(cannonball.rotation)*cannonball_speed+linear_velocity
 		get_tree().current_scene.add_child(cannonball)
-		
+
+func shoot():
+	if !reloading:
+		fire_cannonball(1)
+		if sideshot >= 1:
+			sideshot = 1
+			fire_cannonball(-1)
 		reloading = true
 		await get_tree().create_timer(reload_speed).timeout
 		reloading = false
