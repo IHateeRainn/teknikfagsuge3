@@ -11,7 +11,10 @@ var cannonball_speed = 200
 var reload_speed = 0.1
 var reloading = false
 var health = 100
+var maxhealth = 100
+var basehealth = 100
 var cannonball_scene = preload("res://Projectiles/cannonball.tscn")
+var sideshot = 0
 
 var maxHealth = 100
 @onready var anim = $"../CanvasLayer/pain/AnimationPlayer"
@@ -22,6 +25,19 @@ func _ready() -> void:
 
 func shoot():
 	if !reloading:
+		for i in player_inventory.items:
+			sideshot += i.sideshot
+		if sideshot >= 1:
+			sideshot = 1
+			var cannonball = cannonball_scene.instantiate()
+			for i in player_inventory.items:
+				cannonball.can_richochet += i.can_richochet
+				cannonball.damage += i.damage_boost
+			cannonball.global_position = position
+			cannonball.rotation = rotation+deg_to_rad(90)
+			cannonball.linear_velocity = -Vector2.UP.rotated(cannonball.rotation)*cannonball_speed+linear_velocity
+			get_tree().current_scene.add_child(cannonball)
+			
 		var cannonball = cannonball_scene.instantiate()
 		for i in player_inventory.items:
 			cannonball.can_richochet += i.can_richochet
@@ -29,9 +45,8 @@ func shoot():
 		cannonball.global_position = position
 		cannonball.rotation = rotation+deg_to_rad(90)
 		cannonball.linear_velocity = Vector2.UP.rotated(cannonball.rotation)*cannonball_speed+linear_velocity
-		
 		get_tree().current_scene.add_child(cannonball)
-
+		
 		reloading = true
 		await get_tree().create_timer(reload_speed).timeout
 		reloading = false
