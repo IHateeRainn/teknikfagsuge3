@@ -2,12 +2,9 @@
 
 [ext_resource type="Script" uid="uid://wvtegv56n16g" path="res://inventory/inventory_item.gd" id="1_ptr4k"]
 [ext_resource type="Script" uid="uid://bjybjynyiwxbv" path="res://inventory/inventory.gd" id="2_celxr"]
-[ext_resource type="Resource" uid="uid://bfs5k3321sp76" path="res://inventory/items/richochet_item.tres" id="2_ptr4k"]
-[ext_resource type="Resource" uid="uid://c4co1cjtnawy3" path="res://inventory/items/damage_boost.tres" id="3_65xq6"]
 [ext_resource type="Resource" uid="uid://hdvkevycnjvy" path="res://inventory/items/placeholder.tres" id="3_fi1x0"]
-[ext_resource type="Resource" uid="uid://ct1xbh8q1ufhe" path="res://inventory/items/side_shot.tres" id="4_3ih0p"]
 
 [resource]
 script = ExtResource("2_celxr")
-items = Array[ExtResource("1_ptr4k")]([ExtResource("2_ptr4k"), ExtResource("3_65xq6"), ExtResource("4_3ih0p"), ExtResource("3_fi1x0"), ExtResource("3_fi1x0"), ExtResource("3_fi1x0")])
+items = Array[ExtResource("1_ptr4k")]([ExtResource("3_fi1x0"), ExtResource("3_fi1x0"), ExtResource("3_fi1x0"), ExtResource("3_fi1x0"), ExtResource("3_fi1x0"), ExtResource("3_fi1x0")])
 metadata/_custom_type_script = "uid://bjybjynyiwxbv"

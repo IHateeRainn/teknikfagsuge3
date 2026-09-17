@@ -1,6 +1,5 @@
-extends Resource
-
 class_name InvItem
+extends Resource
 
 @export_category("Identity")
 @export var item_name: String = ""
