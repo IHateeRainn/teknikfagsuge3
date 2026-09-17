@@ -34,6 +34,7 @@ func fire_cannonball(direction):
 		for i in player_inventory.items:
 			cannonball.can_richochet += i.can_richochet
 			cannonball.damage += i.damage_boost
+			cannonball.crit_chance += i.crit_chance
 			sideshot += i.sideshot
 		cannonball.global_position = position
 		cannonball.rotation = rotation+deg_to_rad(90)

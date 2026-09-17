@@ -7,5 +7,5 @@
 script = ExtResource("1_h43h3")
 item_name = "Attack_speed_boost"
 texture = ExtResource("2_mb2cb")
-attack_speed_boost = 0.2
+attack_speed_boost = 0.9
 metadata/_custom_type_script = "uid://wvtegv56n16g"
