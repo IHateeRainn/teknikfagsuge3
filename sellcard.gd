@@ -1,6 +1,8 @@
 extends Control
 class_name SellCard
 
+signal inventory_changed
+
 @onready var item_visual: Sprite2D = $CenterContainer/Panel/Sprite2D
 @export var card_frame: TextureRect
 @export var all_items: Inv
@@ -37,4 +39,5 @@ func _input(event) -> void:
 					player_inventory.items[i] = random_item
 					print(player_inventory.items)
 					break
+			inventory_changed.emit()
 			self.queue_free()

@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://hdvkevycnjvy" path="res://inventory/items/placeholder.tres" id="3_fi1x0"]
 
 [resource]
+resource_name = "player_inventory"
 script = ExtResource("2_celxr")
 items = Array[ExtResource("1_ptr4k")]([ExtResource("3_fi1x0"), ExtResource("3_fi1x0"), ExtResource("3_fi1x0"), ExtResource("3_fi1x0"), ExtResource("3_fi1x0"), ExtResource("3_fi1x0")])
 metadata/_custom_type_script = "uid://bjybjynyiwxbv"

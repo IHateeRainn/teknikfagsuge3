@@ -4,22 +4,28 @@ extends RigidBody2D
 
 signal healthChanged
 
+var cannonball_scene = preload("res://Projectiles/cannonball.tscn")
+
 var speed = 100
 var rSpeed = 1
 var drag = -0.4
-var cannonball_speed = 200
-var reload_speed = 0.1
-var reloading = false
-var health = 100
-var maxhealth = 100
-var basehealth = 100
-var cannonball_scene = preload("res://Projectiles/cannonball.tscn")
-var sideshot = 0
 
-var maxHealth = 100
+var cannonball_speed = 200
+var base_reload_speed = 1
+var reload_speed = 1
+var reloading = false
+
+var health = 100
+var max_health = 100
+var base_health = 100
+
+var sideshot = 0
+var comparison_items = []
+
 @onready var anim = $"../CanvasLayer/pain/AnimationPlayer"
 
 func _ready() -> void:
+	comparison_items = player_inventory.items.duplicate()
 	contact_monitor = true
 	max_contacts_reported = 10
 
@@ -43,6 +49,15 @@ func shoot():
 		reloading = true
 		await get_tree().create_timer(reload_speed).timeout
 		reloading = false
+
+func inventory_changed():
+	max_health = base_health
+	reload_speed = base_reload_speed
+	for i in player_inventory.items:
+		max_health += i.health_boost
+		reload_speed -= i.attack_speed_boost
+	health = max_health
+	print(health)
 
 func _physics_process(delta: float) -> void:
 	#drag
@@ -68,3 +83,7 @@ func _physics_process(delta: float) -> void:
 			print(health)
 			if health <= 0:
 				get_tree().reload_current_scene()
+	if comparison_items != player_inventory.items:
+		print("yea")
+		inventory_changed()
+		comparison_items = player_inventory.items.duplicate()
