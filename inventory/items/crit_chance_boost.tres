@@ -7,5 +7,6 @@
 script = ExtResource("1_a0iin")
 item_name = "crit_chance"
 texture = ExtResource("2_odgte")
+description = "Increases your chance of getting a critical hit"
 crit_chance = 50.0
 metadata/_custom_type_script = "uid://wvtegv56n16g"

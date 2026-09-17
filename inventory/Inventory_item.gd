@@ -4,6 +4,7 @@ extends Resource
 @export_category("Identity")
 @export var item_name: String = ""
 @export var texture: Texture2D
+@export var description: String = ""
 
 @export_category("modifiers")
 @export var can_richochet: float

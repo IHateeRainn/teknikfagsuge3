@@ -7,5 +7,6 @@
 script = ExtResource("2_lrifb")
 item_name = "richochet_item"
 texture = ExtResource("2_or46f")
+description = "Allows your shots to richochet on walls"
 can_richochet = 1.0
 metadata/_custom_type_script = "uid://wvtegv56n16g"

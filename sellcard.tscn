@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://de0tu3qtw2v44" path="res://inventory/player_inventory.tres" id="3_6qv15"]
 [ext_resource type="Resource" uid="uid://hdvkevycnjvy" path="res://inventory/items/placeholder.tres" id="4_lqfom"]
 [ext_resource type="Texture2D" uid="uid://bsxblttnhl5b4" path="res://inventory/inventory-slot.png" id="5_lqfom"]
+[ext_resource type="FontFile" uid="uid://ifg812gixvlj" path="res://inventory/Assets/Bodoni-MT.otf" id="6_oat12"]
 
 [node name="sellcard" type="Control" unique_id=1693994859 node_paths=PackedStringArray("card_frame")]
 custom_minimum_size = Vector2(80, 80)
@@ -40,3 +41,15 @@ layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="CenterContainer/Panel" unique_id=1875023478]
 scale = Vector2(0.8, 0.8)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=454540644]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 84.0
+offset_right = 77.0
+offset_bottom = 147.0
+
+[node name="Label" type="Label" parent="PanelContainer" unique_id=1173304460]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_oat12")
+text = "label"

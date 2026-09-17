@@ -7,5 +7,6 @@
 script = ExtResource("1_v3vyk")
 item_name = "side_shot"
 texture = ExtResource("2_dtod8")
+description = "Allows you to shoot from two sides"
 sideshot = 1.0
 metadata/_custom_type_script = "uid://wvtegv56n16g"

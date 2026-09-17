@@ -7,5 +7,6 @@
 script = ExtResource("1_ry6gx")
 item_name = "damage boost"
 texture = ExtResource("1_5ddxo")
+description = "Boosts your damage"
 damage_boost = 50.0
 metadata/_custom_type_script = "uid://wvtegv56n16g"
