@@ -3,9 +3,13 @@ var explosion_scene = preload("res://projectiles/animated_sprite_2d.tscn")
 var can_richochet = 0
 var lifespan = 7
 var damage = 20
+var crit_chance = 1
+var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if 100 - crit_chance < rng.randf_range(0,1)*100:
+		damage *= 2
 	contact_monitor = true
 	max_contacts_reported = 10
 
@@ -23,4 +27,5 @@ func _physics_process(delta: float) -> void:
 			explosion.global_position = global_position
 			explosion.scale = Vector2(0.3,0.3)
 			get_tree().current_scene.add_child(explosion)
+			print(damage)
 			queue_free()

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cuccr803unsq3" path="res://healthbarUnder.png" id="5_j7kpp"]
 [ext_resource type="Script" uid="uid://bu71doe421ssl" path="res://health_bar.gd" id="5_rka8t"]
 [ext_resource type="Texture2D" uid="uid://dvymxgfgnce48" path="res://healthbarProgress.png" id="6_bjebc"]
+[ext_resource type="PackedScene" uid="uid://dvo30lfhestkl" path="res://inventory/inv_ui.tscn" id="8_gyffv"]
 [ext_resource type="Script" uid="uid://bs3bp1y3bopsu" path="res://wave_spawner.gd" id="9_5rr72"]
 [ext_resource type="Texture2D" uid="uid://dvm3ojam6g2se" path="res://kenney_pirate-pack/vignette.png" id="9_gyffv"]
 [ext_resource type="PackedScene" uid="uid://dkilyhpuilm7f" path="res://navigation_region_2d.tscn" id="10_gyffv"]
@@ -80,6 +81,13 @@ texture = ExtResource("9_gyffv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/pain" unique_id=44550942]
 libraries/ = SubResource("AnimationLibrary_27bay")
+
+[node name="Inv_Ui" parent="CanvasLayer" unique_id=368499442 instance=ExtResource("8_gyffv")]
+offset_left = 300.0
+offset_top = 10.0
+offset_right = -514.0
+offset_bottom = -412.0
+scale = Vector2(3, 3)
 
 [node name="WaveSpawner" type="Node2D" parent="." unique_id=1457523767]
 script = ExtResource("9_5rr72")
