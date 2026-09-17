@@ -4,37 +4,60 @@ extends RigidBody2D
 
 signal healthChanged
 
+var cannonball_scene = preload("res://Projectiles/cannonball.tscn")
+
 var speed = 100
 var rSpeed = 1
 var drag = -0.4
-var cannonball_speed = 200
-var reload_speed = 0.1
-var reloading = false
-var health = 100
-var cannonball_scene = preload("res://Projectiles/cannonball.tscn")
 
-var maxHealth = 100
+var cannonball_speed = 200
+var base_reload_speed = 1
+var reload_speed = 1
+var reloading = false
+
+var health = 100
+var max_health = 100
+var base_health = 100
+
+var sideshot = 0
+var comparison_items = []
+
 @onready var anim = $"../CanvasLayer/pain/AnimationPlayer"
 
 func _ready() -> void:
+	comparison_items = player_inventory.items.duplicate()
 	contact_monitor = true
 	max_contacts_reported = 10
 
-func shoot():
-	if !reloading:
+func fire_cannonball(direction):
 		var cannonball = cannonball_scene.instantiate()
 		for i in player_inventory.items:
 			cannonball.can_richochet += i.can_richochet
 			cannonball.damage += i.damage_boost
+			sideshot += i.sideshot
 		cannonball.global_position = position
 		cannonball.rotation = rotation+deg_to_rad(90)
-		cannonball.linear_velocity = Vector2.UP.rotated(cannonball.rotation)*cannonball_speed+linear_velocity
-		
+		cannonball.linear_velocity = direction*Vector2.UP.rotated(cannonball.rotation)*cannonball_speed+linear_velocity
 		get_tree().current_scene.add_child(cannonball)
 
+func shoot():
+	if !reloading:
+		fire_cannonball(1)
+		if sideshot >= 1:
+			sideshot = 1
+			fire_cannonball(-1)
 		reloading = true
 		await get_tree().create_timer(reload_speed).timeout
 		reloading = false
+
+func inventory_changed():
+	max_health = base_health
+	reload_speed = base_reload_speed
+	for i in player_inventory.items:
+		max_health += i.health_boost
+		reload_speed -= i.attack_speed_boost
+	health = max_health
+	print(health)
 
 func _physics_process(delta: float) -> void:
 	#drag
@@ -60,3 +83,7 @@ func _physics_process(delta: float) -> void:
 			print(health)
 			if health <= 0:
 				get_tree().reload_current_scene()
+	if comparison_items != player_inventory.items:
+		print("yea")
+		inventory_changed()
+		comparison_items = player_inventory.items.duplicate()
