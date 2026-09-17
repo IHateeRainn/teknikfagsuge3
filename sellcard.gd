@@ -6,7 +6,7 @@ class_name SellCard
 @export var all_items: Inv
 @export var player_inventory: Inv
 @export var placeholder_item: InvItem
-
+@onready var player = $player_skib
 
 var hovering: bool
 var random_item

@@ -5,8 +5,9 @@
 [ext_resource type="Resource" uid="uid://bfs5k3321sp76" path="res://inventory/items/richochet_item.tres" id="3_7ir22"]
 [ext_resource type="Resource" uid="uid://ct1xbh8q1ufhe" path="res://inventory/items/side_shot.tres" id="4_oumi1"]
 [ext_resource type="Script" uid="uid://bjybjynyiwxbv" path="res://inventory/inventory.gd" id="5_7k56q"]
+[ext_resource type="Resource" uid="uid://csm6gytel1vwv" path="res://inventory/items/health_boost.tres" id="5_ghg3i"]
 
 [resource]
 script = ExtResource("5_7k56q")
-items = Array[ExtResource("1_gcsju")]([ExtResource("2_ghg3i"), ExtResource("3_7ir22"), ExtResource("4_oumi1")])
+items = Array[ExtResource("1_gcsju")]([ExtResource("2_ghg3i"), ExtResource("3_7ir22"), ExtResource("4_oumi1"), ExtResource("5_ghg3i")])
 metadata/_custom_type_script = "uid://bjybjynyiwxbv"

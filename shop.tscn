@@ -6,13 +6,10 @@
 [ext_resource type="Resource" uid="uid://dwjl84hyh2ra5" path="res://inventory/all_items_list.tres" id="3_fgaav"]
 
 [node name="shop_scene" type="Control" unique_id=877518023 node_paths=PackedStringArray("card_container")]
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 3
-anchor_right = 0.87700003
-anchor_bottom = 0.95300007
-offset_right = 0.27197266
-offset_bottom = -0.15802002
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 400.0
+offset_bottom = 200.0
 script = ExtResource("1_e7rdd")
 sell_card = ExtResource("2_qtu10")
 card_container = NodePath("HBoxContainer")
@@ -20,13 +17,13 @@ shop_inventory = ExtResource("3_fgaav")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1970546600]
 layout_mode = 0
-offset_right = 757.0
-offset_bottom = 456.0
+offset_right = 400.0
+offset_bottom = 200.0
 texture = ExtResource("1_0fbet")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=845563979]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 100.0
-offset_right = 594.0
-offset_bottom = 389.0
+offset_left = 31.0
+offset_top = 24.0
+offset_right = 304.0
+offset_bottom = 173.0

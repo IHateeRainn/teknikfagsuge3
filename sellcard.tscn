@@ -7,13 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://bsxblttnhl5b4" path="res://inventory/inventory-slot.png" id="5_lqfom"]
 
 [node name="sellcard" type="Control" unique_id=1693994859 node_paths=PackedStringArray("card_frame")]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -824.0
-offset_bottom = -446.0
+offset_right = -784.0
+offset_bottom = -406.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eunbg")
@@ -25,15 +25,15 @@ placeholder_item = ExtResource("4_lqfom")
 [node name="TextureRect" type="TextureRect" parent="." unique_id=41848126]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 80.0
+offset_bottom = 80.0
 texture = ExtResource("5_lqfom")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=239995800]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 80.0
+offset_bottom = 80.0
 
 [node name="Panel" type="Panel" parent="CenterContainer" unique_id=463477319]
 layout_mode = 2
