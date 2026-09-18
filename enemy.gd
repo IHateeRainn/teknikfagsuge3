@@ -1,5 +1,5 @@
 extends RigidBody2D
-@onready var player_skib = $"../player_skib"
+@onready var player_skib = get_tree().get_first_node_in_group("player")
 @onready var navigation_agent: NavigationAgent2D = $navigation/NavigationAgent2D
 @onready var level_1 = $".."
 
@@ -86,6 +86,9 @@ func _physics_process(delta: float) -> void:
 func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = 10
+	
+	print("Enemy path: ", get_path())
+	print("Player: ", player_skib)
 
 #opdater path
 func _on_timer_timeout() -> void:

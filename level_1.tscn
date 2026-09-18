@@ -88,6 +88,7 @@ scale = Vector2(3, 3)
 script = ExtResource("9_5rr72")
 enemy_scene = ExtResource("4_ihfcg")
 player_node = NodePath("../player_skib")
+level_node = NodePath("..")
 
 [node name="SpawnTimer" type="Timer" parent="WaveSpawner" unique_id=1838100974]
 
