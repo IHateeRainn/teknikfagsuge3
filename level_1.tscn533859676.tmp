@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://c38noaq37askx"]
+
+[ext_resource type="Script" uid="uid://colqtt3oknisn" path="res://level_1.gd" id="1_ihfcg"]
+[ext_resource type="PackedScene" uid="uid://ctrs24ww00aoh" path="res://player_skib.tscn" id="3_hn12h"]
+[ext_resource type="PackedScene" uid="uid://yu73gnoguins" path="res://enemy.tscn" id="4_ihfcg"]
+[ext_resource type="Texture2D" uid="uid://cuccr803unsq3" path="res://healthbarUnder.png" id="5_j7kpp"]
+[ext_resource type="Script" uid="uid://bu71doe421ssl" path="res://health_bar.gd" id="5_rka8t"]
+[ext_resource type="Texture2D" uid="uid://dvymxgfgnce48" path="res://healthbarProgress.png" id="6_bjebc"]
+[ext_resource type="PackedScene" uid="uid://dvo30lfhestkl" path="res://inventory/inv_ui.tscn" id="8_gyffv"]
+[ext_resource type="Script" uid="uid://bs3bp1y3bopsu" path="res://wave_spawner.gd" id="9_5rr72"]
+[ext_resource type="Texture2D" uid="uid://dvm3ojam6g2se" path="res://kenney_pirate-pack/vignette.png" id="9_gyffv"]
+[ext_resource type="PackedScene" uid="uid://dkilyhpuilm7f" path="res://navigation_region_2d.tscn" id="10_gyffv"]
+
+[sub_resource type="Animation" id="Animation_gyffv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1pe0h"]
+resource_name = "pain"
+length = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.049757216, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0.9699662, 0.9699662, 0.9699662, 1), Color(0.9699662, 0.9699662, 0.9699662, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_27bay"]
+_data = {
+&"RESET": SubResource("Animation_gyffv"),
+&"pain": SubResource("Animation_1pe0h")
+}
+
+[node name="Level1" type="Node2D" unique_id=1983700188 groups=["hitable", "terrain"]]
+script = ExtResource("1_ihfcg")
+
+[node name="player_skib" parent="." unique_id=805400101 instance=ExtResource("3_hn12h")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2076653502]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1483409756]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 74.0
+offset_bottom = 20.0
+scale = Vector2(2.1, 2.1)
+texture_under = ExtResource("5_j7kpp")
+texture_progress = ExtResource("6_bjebc")
+script = ExtResource("5_rka8t")
+
+[node name="pain" type="Node" parent="CanvasLayer" unique_id=1613673370]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/pain" unique_id=726562160]
+modulate = Color(1, 1, 1, 0)
+offset_right = 4159.9995
+offset_bottom = 2354.9998
+scale = Vector2(0.208, 0.208)
+texture = ExtResource("9_gyffv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/pain" unique_id=44550942]
+libraries/ = SubResource("AnimationLibrary_27bay")
+
+[node name="Inv_Ui" parent="CanvasLayer" unique_id=368499442 instance=ExtResource("8_gyffv")]
+offset_left = 300.0
+offset_top = 10.0
+offset_right = -514.0
+offset_bottom = -412.0
+scale = Vector2(3, 3)
+
+[node name="WaveSpawner" type="Node2D" parent="." unique_id=1457523767]
+script = ExtResource("9_5rr72")
+enemy_scene = ExtResource("4_ihfcg")
+player_node = NodePath("../player_skib")
+level_node = NodePath("..")
+
+[node name="SpawnTimer" type="Timer" parent="WaveSpawner" unique_id=1838100974]
+
+[node name="PauseTimer" type="Timer" parent="WaveSpawner" unique_id=983020306]
+
+[node name="NavigationRegion2D" parent="." unique_id=1982912594 instance=ExtResource("10_gyffv")]
