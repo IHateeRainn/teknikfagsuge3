@@ -48,7 +48,7 @@ _data = {
 &"pain": SubResource("Animation_1pe0h")
 }
 
-[node name="Level1" type="Node2D" unique_id=1983700188 groups=["hitable", "terrain"]]
+[node name="Level1" type="Node2D" unique_id=1983700188 groups=["hitable", "level", "terrain"]]
 script = ExtResource("1_ihfcg")
 
 [node name="player_skib" parent="." unique_id=805400101 instance=ExtResource("3_hn12h")]
