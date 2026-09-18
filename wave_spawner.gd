@@ -1,12 +1,100 @@
 extends Node2D
+class_name WaveSpawner
 
-signal wave_started(level: int, enemy_count: int)
-signal wave_completede(level: int)
-signal all_waves_completed
+@export var enemy_scene: PackedScene
+@export var spawn_container: NodePath
+@export var player_node: NodePath
+@export var level_node: NodePath
 
-# Enemy
-@export var enemy_scenes: Array[PackedScene] = []
-@export var spawn_container_path: NodePath
-
-# Størrelsen på waves
+#Wave sizing bliver så: base * growth ^(level - 1)
 @export var base_enemy_count: int = 5
+@export var enemy_count_growth: float = 1.2
+
+#Tid
+@export var spawn_interval: float = 0.5
+@export var wave_pause_duration: float = 5.0
+
+@export var health_growth: float = 1.10
+@export var speed_growth: float = 1.05
+@export var damage_growth: float = 1.10
+
+@export var spawn_margin: float = 50.0
+
+
+var current_level: int = 1
+var enemies_alive: int = 0
+var enemies_to_spawn: int = 0
+
+@onready var _spawn_timer: Timer = $SpawnTimer
+@onready var _pause_timer: Timer = $PauseTimer
+
+func _ready() -> void:
+	_spawn_timer.timeout.connect(_on_spawn_timer_timeout)
+	_pause_timer.one_shot = true
+	_pause_timer.timeout.connect(_start_wave)
+	
+	_start_wave()
+
+func _start_wave() -> void:
+	enemies_to_spawn = _get_enemy_count_for_level(current_level)
+	enemies_alive = 0
+	
+	_spawn_timer.wait_time = spawn_interval
+	_spawn_timer.start()
+	_on_spawn_timer_timeout()
+
+func _get_enemy_count_for_level(level: int) -> int:
+	return int(round(base_enemy_count * pow(enemy_count_growth, level - 1)))
+
+func _on_spawn_timer_timeout() -> void:
+	if enemies_to_spawn <= 0:
+		_spawn_timer.stop()
+		return
+	_spawn_enemy()
+	enemies_to_spawn -= 1
+	if enemies_to_spawn <= 0:
+		_spawn_timer.stop()
+		
+func _spawn_enemy() -> void:
+	var enemy:= enemy_scene.instantiate()
+	get_tree().current_scene.add_child(enemy)
+	enemy.global_position = _get_random_edge_position()
+	
+	var level_mult := current_level -1
+	enemy.health *= pow(health_growth, level_mult)
+	enemy.speed *= pow(speed_growth, level_mult)
+	enemy.damage *= pow(damage_growth, level_mult)
+	
+	enemies_alive += 1
+	enemy.tree_exited.connect(_on_enemy_died, CONNECT_ONE_SHOT)
+	
+func _on_enemy_died() -> void:
+	enemies_alive -= 1
+	if enemies_alive <= 0 and enemies_to_spawn <= 0:
+		current_level += 1
+		_pause_timer.wait_time = wave_pause_duration
+		_pause_timer.start()
+		
+func _get_random_edge_position() -> Vector2:
+	var viewport := get_viewport()
+	var rect := viewport.get_visible_rect()
+	var inverse_transform := viewport.get_canvas_transform().affine_inverse()
+	
+	var world_top_left: Vector2 = inverse_transform * rect.position
+	var world_bottom_right: Vector2 = inverse_transform * rect.end
+	
+	var pos := Vector2.ZERO
+	match randi() % 4:
+		0: # top
+			pos.x = randf_range(world_top_left.x, world_bottom_right.x)
+			pos.y = world_top_left.y - spawn_margin
+		1: # bottom
+			pos.x = randf_range(world_top_left.x, world_bottom_right.x)
+			pos.y = world_bottom_right.y + spawn_margin
+		2: # left
+			pos.x = world_top_left.x - spawn_margin
+			pos.y = randf_range(world_top_left.y, world_bottom_right.y)
+		3: # right
+			pos.x = world_bottom_right.x + spawn_margin
+			pos.y = randf_range(world_top_left.y, world_bottom_right.y)
+	return pos

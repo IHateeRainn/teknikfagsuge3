@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://xhr3ci5ft8d"]
 
-[ext_resource type="Texture2D" uid="uid://bugiij63ulghf" path="res://icon.svg" id="1_0fbet"]
 [ext_resource type="Script" uid="uid://bxoarpf4qktwj" path="res://shop.gd" id="1_e7rdd"]
 [ext_resource type="PackedScene" uid="uid://d4e6dgo8hc88k" path="res://sellcard.tscn" id="2_qtu10"]
 [ext_resource type="Resource" uid="uid://dwjl84hyh2ra5" path="res://inventory/all_items_list.tres" id="3_fgaav"]
+[ext_resource type="Texture2D" uid="uid://dqmgkapdnrmym" path="res://inventory/Assets/Shop Board.png" id="4_fgaav"]
 
 [node name="shop_scene" type="Control" unique_id=877518023 node_paths=PackedStringArray("card_container")]
 custom_minimum_size = Vector2(400, 200)
 layout_mode = 3
+anchors_preset = 0
 offset_right = 400.0
 offset_bottom = 200.0
 script = ExtResource("1_e7rdd")
@@ -19,11 +20,11 @@ shop_inventory = ExtResource("3_fgaav")
 layout_mode = 0
 offset_right = 400.0
 offset_bottom = 200.0
-texture = ExtResource("1_0fbet")
+texture = ExtResource("4_fgaav")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=845563979]
 layout_mode = 0
-offset_left = 31.0
-offset_top = 24.0
-offset_right = 304.0
-offset_bottom = 173.0
+offset_left = 166.0
+offset_top = 143.0
+offset_right = 680.0
+offset_bottom = 381.0
