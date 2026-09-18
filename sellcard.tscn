@@ -6,18 +6,6 @@
 [ext_resource type="Resource" uid="uid://hdvkevycnjvy" path="res://inventory/items/placeholder.tres" id="4_lqfom"]
 [ext_resource type="Texture2D" uid="uid://b4v5vb4hdd4dr" path="res://inventory/Assets/Jack_small.png" id="5_lqfom"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0iin"]
-bg_color = Color(0.73333335, 0.6745098, 0.53333336, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.25490198, 0.1254902, 0.07058824, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-
 [node name="sellcard" type="Control" unique_id=1693994859 node_paths=PackedStringArray("card_frame")]
 custom_minimum_size = Vector2(110, 147)
 layout_mode = 3
@@ -44,15 +32,3 @@ offset_bottom = 147.0
 [node name="Sprite2D" type="Sprite2D" parent="Panel" unique_id=774788646]
 texture = ExtResource("5_lqfom")
 centered = false
-
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=749554109]
-layout_mode = 0
-offset_left = -0.99999976
-offset_top = 149.00002
-offset_right = 39.0
-offset_bottom = 192.00002
-scale = Vector2(2.6451, 1.626219)
-theme_override_styles/panel = SubResource("StyleBoxFlat_a0iin")
-
-[node name="Label" type="Label" parent="PanelContainer" unique_id=1792833455]
-layout_mode = 2
