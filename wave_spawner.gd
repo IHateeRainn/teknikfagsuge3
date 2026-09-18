@@ -28,6 +28,8 @@ var enemies_to_spawn: int = 0
 @onready var _spawn_timer: Timer = $SpawnTimer
 @onready var _pause_timer: Timer = $PauseTimer
 
+@export var player_inventory: Inv
+
 func _ready() -> void:
 	_spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	_pause_timer.one_shot = true
@@ -60,7 +62,13 @@ func _on_spawn_timer_timeout() -> void:
 func _spawn_enemy() -> void:
 	var level_mult = current_level -1
 	var enemy:= enemy_scene.instantiate()
-	enemy.global_position = _get_random_edge_position()
+
+	var raw_pos = _get_random_edge_position()
+	
+	var map_rid = get_world_2d().navigation_map
+	var safe_position = NavigationServer2D.map_get_closest_point(map_rid, raw_pos)
+	
+	enemy.global_position = safe_position
 	enemy.health *= pow(health_growth, level_mult)
 	enemy.speed *= pow(speed_growth, level_mult)
 	enemy.damage *= pow(damage_growth, level_mult)
@@ -73,6 +81,7 @@ func _spawn_enemy() -> void:
 
 
 func _on_enemy_died() -> void:
+	player_inventory.gold += 10
 	enemies_alive -= 1
 	print("DEBUG enemy died, enemies_alive=", enemies_alive, " enemies_to_spawn=", enemies_to_spawn)
 	if enemies_alive <= 0 and enemies_to_spawn <= 0:

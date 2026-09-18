@@ -8,6 +8,7 @@ class_name SellCard
 @export var placeholder_item: InvItem
 @onready var player = $player_skib
 @onready var description_label: Label = $PanelContainer/Label
+@onready var cost_label: Label = $cost
 
 var hovering: bool
 var random_item
@@ -16,6 +17,7 @@ func _ready():
 	random_item = all_items.items[randi() % all_items.items.size()]
 	item_visual.texture = random_item.texture
 	description_label.text = random_item.description
+	cost_label.text = str(random_item.cost)
 
 func _process(_delta):
 	if is_mouse_over_card():
