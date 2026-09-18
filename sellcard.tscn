@@ -19,6 +19,11 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="LabelSettings" id="LabelSettings_oat12"]
+font = ExtResource("6_oat12")
+font_size = 30
+font_color = Color(0.3372549, 0.1764706, 0, 1)
+
 [node name="sellcard" type="Control" unique_id=1693994859 node_paths=PackedStringArray("card_frame")]
 custom_minimum_size = Vector2(110, 147)
 layout_mode = 3
@@ -60,3 +65,11 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.24705882, 0.11372549, 0.0627451, 1)
 theme_override_fonts/font = ExtResource("6_oat12")
 theme_override_font_sizes/font_size = 12
+
+[node name="cost" type="Label" parent="." unique_id=1862174067]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 103.0
+offset_right = 82.0
+offset_bottom = 140.0
+label_settings = SubResource("LabelSettings_oat12")
