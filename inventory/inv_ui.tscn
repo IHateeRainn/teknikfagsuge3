@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dvo30lfhestkl"]
 
 [ext_resource type="Script" uid="uid://cgslrby2w4t00" path="res://inventory/inv_ui.gd" id="1_f2u1w"]
+[ext_resource type="Resource" uid="uid://de0tu3qtw2v44" path="res://inventory/player_inventory.tres" id="2_r1b7r"]
 [ext_resource type="Texture2D" uid="uid://d4kutkyoolutw" path="res://inventory/inventory-background.png" id="2_w82yi"]
 [ext_resource type="PackedScene" uid="uid://bxnwl86jj1uih" path="res://inventory/Inv_slot.tscn" id="3_dn3an"]
 
@@ -16,6 +17,7 @@ offset_bottom = -422.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_f2u1w")
+player_inventory = ExtResource("2_r1b7r")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=345907038]
 layout_mode = 0

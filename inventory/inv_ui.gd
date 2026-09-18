@@ -2,6 +2,7 @@ extends Control
 
 @onready var inv: Inv = preload("res://inventory/player_inventory.tres")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
+@export var player_inventory: Inv
 
 var is_open = false
 
@@ -36,5 +37,7 @@ func close():
 func _on_item_clicked(item: InvItem):
 	var index := inv.items.find(item)
 	if index != -1:
+		player_inventory.gold += player_inventory.items[index].cost*0.5
+		print(player_inventory.gold)
 		inv.items.remove_at(index)
 		update_slots()
