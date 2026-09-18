@@ -11,7 +11,7 @@ class_name WaveSpawner
 @export var enemy_count_growth: float = 1.2
 
 #Tid
-@export var spawn_interval: float = 0.5
+@export var spawn_interval: float = 6.0
 @export var wave_pause_duration: float = 5.0
 
 @export var health_growth: float = 1.10
@@ -38,6 +38,7 @@ func _ready() -> void:
 func _start_wave() -> void:
 	enemies_to_spawn = _get_enemy_count_for_level(current_level)
 	enemies_alive = 0
+	print(_get_enemy_count_for_level(current_level))
 	
 	_spawn_timer.wait_time = spawn_interval
 	_spawn_timer.start()
