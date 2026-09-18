@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://bpwqomhg8lso2"]
 
-[ext_resource type="Script" uid="uid://bj7rqaps7jt58" path="res://inventory/inventory_item.gd" id="1_h43h3"]
+[ext_resource type="Script" uid="uid://ddi35iqf48tr5" path="res://inventory/inventory_item.gd" id="1_h43h3"]
 [ext_resource type="Texture2D" uid="uid://b4v5vb4hdd4dr" path="res://inventory/Assets/Jack_small.png" id="2_mb2cb"]
 
 [resource]
@@ -10,3 +10,4 @@ texture = ExtResource("2_mb2cb")
 cost = 40.0
 description = "shoot faster"
 attack_speed_boost = 0.3
+metadata/_custom_type_script = "uid://wvtegv56n16g"
