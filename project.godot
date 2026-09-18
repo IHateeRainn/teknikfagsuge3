@@ -35,6 +35,7 @@ hitable=""
 enemy=""
 enemy_cannonball=""
 terrain=""
+level=""
 
 [input]
 

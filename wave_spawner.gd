@@ -11,7 +11,7 @@ class_name WaveSpawner
 @export var enemy_count_growth: float = 1.2
 
 #Tid
-@export var spawn_interval: float = 6.0
+@export var spawn_interval: float = 3.0
 @export var wave_pause_duration: float = 5.0
 
 @export var health_growth: float = 1.10
@@ -22,7 +22,7 @@ class_name WaveSpawner
 
 
 var current_level: int = 1
-var enemies_alive: int = 0
+var enemies_alive: int = 1
 var enemies_to_spawn: int = 0
 
 @onready var _spawn_timer: Timer = $SpawnTimer
@@ -36,6 +36,7 @@ func _ready() -> void:
 	_start_wave()
 
 func _start_wave() -> void:
+	print("DEBUG _start_wave called, current_level=", current_level)
 	enemies_to_spawn = _get_enemy_count_for_level(current_level)
 	enemies_alive = 0
 	print(_get_enemy_count_for_level(current_level))
@@ -65,12 +66,17 @@ func _spawn_enemy() -> void:
 	enemy.damage *= pow(damage_growth, level_mult)
 	get_tree().current_scene.add_child(enemy)
 	
-	enemies_alive += 1
+	if enemies_to_spawn != _get_enemy_count_for_level(current_level):
+		enemies_alive += 1
 	enemy.tree_exited.connect(_on_enemy_died, CONNECT_ONE_SHOT)
+	print("DEBUG spawned enemy, enemies_alive=", enemies_alive, " enemies_to_spawn=", enemies_to_spawn)
+
 
 func _on_enemy_died() -> void:
 	enemies_alive -= 1
+	print("DEBUG enemy died, enemies_alive=", enemies_alive, " enemies_to_spawn=", enemies_to_spawn)
 	if enemies_alive <= 0 and enemies_to_spawn <= 0:
+		print("DEBUG wave cleared! starting pause timer, wait_time=", wave_pause_duration)
 		current_level += 1
 		_pause_timer.wait_time = wave_pause_duration
 		_pause_timer.start()

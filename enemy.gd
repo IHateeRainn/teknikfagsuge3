@@ -1,8 +1,7 @@
 extends RigidBody2D
 @onready var player_skib = get_tree().get_first_node_in_group("player")
 @onready var navigation_agent: NavigationAgent2D = $navigation/NavigationAgent2D
-@onready var level_1 = $"../Level_1"
-
+@onready var level_1 = get_tree().get_first_node_in_group("level")
 
 var explosion_scene = preload("res://Projectiles/animated_sprite_2d.tscn")
 var cannonball_scene = preload("res://Projectiles/enemy_cannonball.tscn")
