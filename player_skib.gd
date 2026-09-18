@@ -83,7 +83,9 @@ func _physics_process(delta: float) -> void:
 			healthChanged.emit()
 			print(health)
 			if health <= 0:
-				get_tree().reload_current_scene()
+				get_tree().paused = true
+				$"../../../UI/DeathScreen".show()
+				
 	if comparison_items != player_inventory.items:
 		print("yea")
 		inventory_changed()

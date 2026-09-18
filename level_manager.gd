@@ -1,4 +1,5 @@
 extends Node
+class_name Level_Manager
 
 #Når et level er færdigt skriv: LevelManager.level_number += 1
 

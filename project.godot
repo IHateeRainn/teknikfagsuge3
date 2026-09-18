@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="pirat spil - teknikfags uge"
-run/main_scene="uid://c38noaq37askx"
+run/main_scene="uid://b43cr5ebbkti5"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-LevelManager="*uid://dllpm4e3frrxu"
+LevelManager="*uid://bibjusdfumxnd"
 
 [display]
 

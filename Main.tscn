@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://b43cr5ebbkti5"]
+
+[ext_resource type="Script" uid="uid://dxlhjwu87xeii" path="res://start_menu.gd" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://c38noaq37askx" path="res://level_1.tscn" id="1_uu6xs"]
+[ext_resource type="Script" uid="uid://cnoi711gt8r0p" path="res://death_screen.gd" id="3_r0du0"]
+
+[node name="Node2D" type="Node2D" unique_id=1486842758]
+
+[node name="Game" type="Node2D" parent="." unique_id=1416080633]
+
+[node name="Level1" parent="Game" unique_id=1983700188 instance=ExtResource("1_uu6xs")]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1261042644]
+
+[node name="StartMenu" type="Control" parent="UI" unique_id=1035430755]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_glv2v")
+
+[node name="ColorRect" type="ColorRect" parent="UI/StartMenu" unique_id=717208185]
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -688.0
+offset_top = -581.0
+offset_right = -688.0
+offset_bottom = -581.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(83.91698, 44.98657)
+color = Color(0, 0, 0, 0.7058824)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/StartMenu" unique_id=687175665]
+z_index = 11
+layout_mode = 1
+offset_left = 405.0
+offset_top = 161.0
+offset_right = 466.0
+offset_bottom = 219.0
+
+[node name="Label" type="Label" parent="UI/StartMenu/VBoxContainer" unique_id=1339344868]
+z_index = 12
+layout_mode = 2
+text = "\"Piracy\""
+
+[node name="Start" type="Button" parent="UI/StartMenu/VBoxContainer" unique_id=825409647]
+z_index = 12
+layout_mode = 2
+text = "Start
+"
+
+[node name="DeathScreen" type="Control" parent="UI" unique_id=1597750922]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_r0du0")
+
+[node name="ColorRect" type="ColorRect" parent="UI/DeathScreen" unique_id=469714774]
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -688.0
+offset_top = -581.0
+offset_right = -688.0
+offset_bottom = -581.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(83.91698, 44.98657)
+color = Color(0, 0, 0, 0.7058824)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DeathScreen" unique_id=1286141171]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 141.0
+offset_right = 504.0
+offset_bottom = 242.0
+
+[node name="Retry" type="Button" parent="UI/DeathScreen/VBoxContainer" unique_id=1392630263]
+layout_mode = 2
+text = "Retry"
+
+[node name="Inv" type="Button" parent="UI/DeathScreen/VBoxContainer" unique_id=834449965]
+layout_mode = 2
+text = "Inventory"
+
+[node name="Quit" type="Button" parent="UI/DeathScreen/VBoxContainer" unique_id=1546945044]
+layout_mode = 2
+text = "Quit to main menu"
+
+[node name="PauseOverlay" type="Control" parent="UI" unique_id=2049742241]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MaybeInv" type="Control" parent="UI" unique_id=896634204]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MaybeShop" type="Control" parent="UI" unique_id=728559043]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="UI/StartMenu/VBoxContainer/Start" to="UI/StartMenu" method="_on_start_pressed"]
+[connection signal="pressed" from="UI/DeathScreen/VBoxContainer/Retry" to="UI/DeathScreen" method="_on_retry_pressed"]
+[connection signal="pressed" from="UI/DeathScreen/VBoxContainer/Quit" to="UI/DeathScreen" method="_on_quit_pressed"]

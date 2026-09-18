@@ -51,8 +51,6 @@ _data = {
 [node name="Level1" type="Node2D" unique_id=1983700188 groups=["hitable", "terrain"]]
 script = ExtResource("1_ihfcg")
 
-[node name="Game_manager" type="Node" parent="." unique_id=1098553084]
-
 [node name="player_skib" parent="." unique_id=805400101 instance=ExtResource("3_hn12h")]
 
 [node name="enemy" parent="." unique_id=42896431 instance=ExtResource("4_ihfcg")]

@@ -45,3 +45,7 @@ func open_close_shop():
 	else:
 		shop.queue_free()
 		shop_open = false
+
+
+func _on_retry_pressed() -> void:
+	pass # Replace with function body.

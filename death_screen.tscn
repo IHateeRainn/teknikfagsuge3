@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bxt7b1vwrvla3"]
+
+[ext_resource type="Script" uid="uid://cnoi711gt8r0p" path="res://death_screen.gd" id="1_if853"]
+
+[node name="DeathScreen" type="Control" unique_id=902995968]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_if853")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1373775490]
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -688.0
+offset_top = -581.0
+offset_right = -688.0
+offset_bottom = -581.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(83.91698, 44.98657)
+color = Color(0, 0, 0, 0.7058824)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1268592365]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 141.0
+offset_right = 504.0
+offset_bottom = 242.0
+
+[node name="Retry" type="Button" parent="VBoxContainer" unique_id=775704581]
+layout_mode = 2
+text = "Retry"
+
+[node name="Inv" type="Button" parent="VBoxContainer" unique_id=2055051180]
+layout_mode = 2
+text = "Inventory"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=375958098]
+layout_mode = 2
+text = "Quit to main menu"
+
+[connection signal="pressed" from="VBoxContainer/Retry" to="." method="_on_retry_pressed"]
