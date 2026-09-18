@@ -8,3 +8,7 @@ func _on_start_pressed():
 	get_tree().paused = false
 	#Level_manager.load_level(Level_manager.level_number)
 	
+
+func _on_shop_pressed() -> void:
+	hide()
+	$"../Shop".show()

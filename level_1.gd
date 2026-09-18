@@ -49,3 +49,7 @@ func open_close_shop():
 
 func _on_retry_pressed() -> void:
 	pass # Replace with function body.
+
+
+func _on_return_to_death_pressed() -> void:
+	pass # Replace with function body.

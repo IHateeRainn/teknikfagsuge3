@@ -1,6 +1,10 @@
 extends Control
 
 
+func _on_inv_pressed() -> void:
+	hide()
+	$"../Inventory".show()
+
 
 func _on_retry_pressed():
 	hide()
@@ -10,4 +14,5 @@ func _on_retry_pressed():
 
 func _on_quit_pressed() -> void:
 	hide()
+	get_tree().reload_current_scene()
 	$"../StartMenu".show()
