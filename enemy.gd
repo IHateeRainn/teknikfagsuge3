@@ -1,7 +1,7 @@
 extends RigidBody2D
-@onready var player_skib = $"../player_skib"
+@onready var player_skib = get_tree().get_first_node_in_group("player")
 @onready var navigation_agent: NavigationAgent2D = $navigation/NavigationAgent2D
-@onready var level_1 = $".."
+@onready var level_1 = $"../Level_1"
 
 
 var explosion_scene = preload("res://Projectiles/animated_sprite_2d.tscn")
@@ -80,12 +80,14 @@ func _physics_process(delta: float) -> void:
 				explosion.global_position = global_position
 				explosion.scale = Vector2(1,1)
 				get_tree().current_scene.add_child(explosion)
-				level_1.enemy_amount -= 1
-				queue_free()
+				self.queue_free()
 
 func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = 10
+	
+	print("Enemy path: ", get_path())
+	print("Player: ", player_skib)
 
 #opdater path
 func _on_timer_timeout() -> void:

@@ -11,7 +11,7 @@ class_name WaveSpawner
 @export var enemy_count_growth: float = 1.2
 
 #Tid
-@export var spawn_interval: float = 0.5
+@export var spawn_interval: float = 6.0
 @export var wave_pause_duration: float = 5.0
 
 @export var health_growth: float = 1.10
@@ -38,6 +38,7 @@ func _ready() -> void:
 func _start_wave() -> void:
 	enemies_to_spawn = _get_enemy_count_for_level(current_level)
 	enemies_alive = 0
+	print(_get_enemy_count_for_level(current_level))
 	
 	_spawn_timer.wait_time = spawn_interval
 	_spawn_timer.start()
@@ -56,18 +57,17 @@ func _on_spawn_timer_timeout() -> void:
 		_spawn_timer.stop()
 		
 func _spawn_enemy() -> void:
+	var level_mult = current_level -1
 	var enemy:= enemy_scene.instantiate()
-	get_tree().current_scene.add_child(enemy)
 	enemy.global_position = _get_random_edge_position()
-	
-	var level_mult := current_level -1
 	enemy.health *= pow(health_growth, level_mult)
 	enemy.speed *= pow(speed_growth, level_mult)
 	enemy.damage *= pow(damage_growth, level_mult)
+	get_tree().current_scene.add_child(enemy)
 	
 	enemies_alive += 1
 	enemy.tree_exited.connect(_on_enemy_died, CONNECT_ONE_SHOT)
-	
+
 func _on_enemy_died() -> void:
 	enemies_alive -= 1
 	if enemies_alive <= 0 and enemies_to_spawn <= 0:
