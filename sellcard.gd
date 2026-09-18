@@ -39,6 +39,6 @@ func _input(event) -> void:
 			for i in player_inventory.items.size():
 				if player_inventory.items[i] == placeholder_item:
 					player_inventory.items[i] = random_item
-					print(player_inventory.items)
 					break
+			print(player_inventory.items)
 			self.queue_free()
