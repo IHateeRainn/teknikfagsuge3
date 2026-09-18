@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dvo30lfhestkl" path="res://inventory/inv_ui.tscn" id="8_gyffv"]
 [ext_resource type="Script" uid="uid://bs3bp1y3bopsu" path="res://wave_spawner.gd" id="9_5rr72"]
 [ext_resource type="Texture2D" uid="uid://dvm3ojam6g2se" path="res://kenney_pirate-pack/vignette.png" id="9_gyffv"]
-[ext_resource type="Resource" uid="uid://de0tu3qtw2v44" path="res://inventory/player_inventory.tres" id="10_1pe0h"]
 [ext_resource type="PackedScene" uid="uid://dkilyhpuilm7f" path="res://navigation_region_2d.tscn" id="10_gyffv"]
 
 [sub_resource type="Animation" id="Animation_gyffv"]
@@ -49,7 +48,7 @@ _data = {
 &"pain": SubResource("Animation_1pe0h")
 }
 
-[node name="Level1" type="Node2D" unique_id=1983700188 groups=["hitable", "level", "terrain"]]
+[node name="Level1" type="Node2D" unique_id=1983700188 groups=["hitable", "terrain"]]
 script = ExtResource("1_ihfcg")
 
 [node name="player_skib" parent="." unique_id=805400101 instance=ExtResource("3_hn12h")]
@@ -90,7 +89,6 @@ script = ExtResource("9_5rr72")
 enemy_scene = ExtResource("4_ihfcg")
 player_node = NodePath("../player_skib")
 level_node = NodePath("..")
-player_inventory = ExtResource("10_1pe0h")
 
 [node name="SpawnTimer" type="Timer" parent="WaveSpawner" unique_id=1838100974]
 

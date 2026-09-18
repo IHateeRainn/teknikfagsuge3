@@ -6,6 +6,10 @@ extends Control
 var is_open = false
 
 func _ready() -> void:
+	
+	for slot in slots:
+		slot.item_clicked.connect(_on_item_clicked)
+	
 	update_slots()
 	close()
 
@@ -28,3 +32,9 @@ func open():
 func close():
 	visible = false
 	is_open = false
+
+func _on_item_clicked(item: InvItem):
+	var index := inv.items.find(item)
+	if index != -1:
+		inv.items.remove_at(index)
+		update_slots()
