@@ -55,9 +55,6 @@ script = ExtResource("1_ihfcg")
 
 [node name="player_skib" parent="." unique_id=805400101 instance=ExtResource("3_hn12h")]
 
-[node name="enemy" parent="." unique_id=42896431 instance=ExtResource("4_ihfcg")]
-position = Vector2(330, 128)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2076653502]
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1483409756]
@@ -91,7 +88,11 @@ scale = Vector2(3, 3)
 
 [node name="WaveSpawner" type="Node2D" parent="." unique_id=1457523767]
 script = ExtResource("9_5rr72")
+enemy_scene = ExtResource("4_ihfcg")
+player_node = NodePath("../player_skib")
 
-[node name="Timer" type="Timer" parent="WaveSpawner" unique_id=1838100974]
+[node name="SpawnTimer" type="Timer" parent="WaveSpawner" unique_id=1838100974]
+
+[node name="PauseTimer" type="Timer" parent="WaveSpawner" unique_id=983020306]
 
 [node name="NavigationRegion2D" parent="." unique_id=1982912594 instance=ExtResource("10_gyffv")]

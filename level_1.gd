@@ -23,7 +23,7 @@ func spawn_enemy():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	spawn_enemy()
+	#spawn_enemy()
 	pass # Replace with function body.
 
 
@@ -31,10 +31,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("o"):
 		open_close_shop()
-	if time_till_spawn <= 0:
-		spawn_enemy()
-		time_till_spawn = enemy_spawn_rate
-	time_till_spawn -= delta
+	#if time_till_spawn <= 0:
+		#spawn_enemy()
+		#time_till_spawn = enemy_spawn_rate
+	#time_till_spawn -= delta
 
 func open_close_shop():
 	if !shop_open:
