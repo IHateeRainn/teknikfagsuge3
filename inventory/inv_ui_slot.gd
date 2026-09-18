@@ -11,7 +11,6 @@ signal item_clicked(item)
 
 func update(new_item: InvItem):
 	item = new_item
-	
 	if !item:
 		item_visual.visible = false
 	else:
