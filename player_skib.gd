@@ -58,7 +58,6 @@ func inventory_changed():
 		max_health += i.health_boost
 		reload_speed -= i.attack_speed_boost
 	health = max_health
-	print(health)
 
 func _physics_process(delta: float) -> void:
 	#drag
@@ -81,12 +80,10 @@ func _physics_process(delta: float) -> void:
 			health -= body.damage
 			anim.play("pain")
 			healthChanged.emit()
-			print(health)
 			if health <= 0:
 				get_tree().paused = true
 				$"../../../UI/DeathScreen".show()
 				
 	if comparison_items != player_inventory.items:
-		print("yea")
 		inventory_changed()
 		comparison_items = player_inventory.items.duplicate()

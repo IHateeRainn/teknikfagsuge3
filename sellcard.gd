@@ -41,5 +41,6 @@ func _input(event) -> void:
 					if player_inventory.items[i] == placeholder_item:
 						player_inventory.items[i] = random_item
 						break
-				print(player_inventory.items)
+				player_inventory.gold -= random_item.cost
+				print(player_inventory.gold)
 				self.queue_free()

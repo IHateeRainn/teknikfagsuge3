@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c5wsd4vcwxgja"]
+
+[ext_resource type="FontFile" uid="uid://ifg812gixvlj" path="res://inventory/Assets/Bodoni-MT.otf" id="1_n0p1s"]
+[ext_resource type="Script" uid="uid://k4g8xnxxw4f3" path="res://Projectiles/hitmarker.gd" id="1_r73pe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rq2k3"]
+font = ExtResource("1_n0p1s")
+font_color = Color(1, 0, 0, 1)
+
+[node name="hitmarker" type="Control" unique_id=1013647058]
+layout_mode = 3
+anchor_right = 0.076000005
+anchor_bottom = 0.14600001
+offset_right = 0.33599854
+offset_bottom = 0.04399109
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r73pe")
+
+[node name="Label" type="Label" parent="." unique_id=52661876]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_rq2k3")
+
+[node name="StartTimer" type="Timer" parent="." unique_id=1860046440]
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

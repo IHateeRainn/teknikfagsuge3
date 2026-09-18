@@ -5,7 +5,7 @@ var lifespan = 7
 var damage = 20
 var crit_chance = 1
 var rng = RandomNumberGenerator.new()
-
+var hitmarker_scene = preload("res://Projectiles/hitmarker.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if 100 - crit_chance < rng.randf_range(0,1)*100:
@@ -27,4 +27,9 @@ func _physics_process(delta: float) -> void:
 			explosion.global_position = global_position
 			explosion.scale = Vector2(0.3,0.3)
 			get_tree().current_scene.add_child(explosion)
+			var hitmarker = hitmarker_scene.instantiate()
+			hitmarker.global_position = global_position
+			hitmarker.scale = Vector2(1,1) * damage / 20
+			hitmarker.get_node("Label").text = str(damage)
+			get_tree().current_scene.add_child(hitmarker)
 			queue_free()
