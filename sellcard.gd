@@ -9,6 +9,7 @@ signal inventory_changed
 @export var player_inventory: Inv
 @export var placeholder_item: InvItem
 @onready var player = $player_skib
+@onready var description_label: Label = $PanelContainer/Label
 
 var hovering: bool
 var random_item
@@ -16,14 +17,18 @@ var random_item
 func _ready():
 	random_item = all_items.items[randi() % all_items.items.size()]
 	item_visual.texture = random_item.texture
+	description_label.text = random_item.description
 
 func _process(_delta):
 	if is_mouse_over_card():
 		hovering = true
 		scale = Vector2(1.2,1.2)
+		$PanelContainer.show()
 	else:
+		
 		hovering = false
 		scale = Vector2(1,1)
+		$PanelContainer.hide()
 
 func is_mouse_over_card():
 	var mouse_pos: Vector2 = get_global_mouse_position()
