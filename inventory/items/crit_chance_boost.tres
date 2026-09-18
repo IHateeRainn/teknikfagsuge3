@@ -1,11 +1,10 @@
 [gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://j7my4rh52u3m"]
 
-[ext_resource type="Script" uid="uid://bj7rqaps7jt58" path="res://inventory/inventory_item.gd" id="1_a0iin"]
-[ext_resource type="Texture2D" uid="uid://cqxqkm57mmbkv" path="res://kenney_pirate-pack/PNG/Default size/Ship parts/flag (1).png" id="2_odgte"]
+[ext_resource type="Script" uid="uid://bj7rqaps7jt58" path="res://inventory/Inventory_item.gd" id="1_a0iin"]
+[ext_resource type="Texture2D" uid="uid://b4v5vb4hdd4dr" path="res://inventory/Assets/Jack_small.png" id="2_a0iin"]
 
 [resource]
 script = ExtResource("1_a0iin")
 item_name = "crit_chance"
-texture = ExtResource("2_odgte")
+texture = ExtResource("2_a0iin")
 crit_chance = 50.0
-metadata/_custom_type_script = "uid://wvtegv56n16g"

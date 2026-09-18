@@ -4,39 +4,31 @@
 [ext_resource type="Resource" uid="uid://dwjl84hyh2ra5" path="res://inventory/all_items_list.tres" id="2_6qv15"]
 [ext_resource type="Resource" uid="uid://de0tu3qtw2v44" path="res://inventory/player_inventory.tres" id="3_6qv15"]
 [ext_resource type="Resource" uid="uid://hdvkevycnjvy" path="res://inventory/items/placeholder.tres" id="4_lqfom"]
-[ext_resource type="Texture2D" uid="uid://bbsx63tawl47n" path="res://inventory/Assets/Bertram.png" id="5_lqfom"]
+[ext_resource type="Texture2D" uid="uid://b4v5vb4hdd4dr" path="res://inventory/Assets/Jack_small.png" id="5_lqfom"]
 
 [node name="sellcard" type="Control" unique_id=1693994859 node_paths=PackedStringArray("card_frame")]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(110, 147)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -784.0
-offset_bottom = -406.0
+offset_right = -754.0
+offset_bottom = -339.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eunbg")
-card_frame = NodePath("CenterContainer/Panel/Sprite2D")
+card_frame = NodePath("Panel")
 all_items = ExtResource("2_6qv15")
 player_inventory = ExtResource("3_6qv15")
 placeholder_item = ExtResource("4_lqfom")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=18823683]
-custom_minimum_size = Vector2(100, 100)
+[node name="Panel" type="Panel" parent="." unique_id=1407147208]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(110, 147)
 layout_mode = 0
-offset_right = 864.0
-offset_bottom = 486.0
+offset_right = 110.0
+offset_bottom = 147.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel" unique_id=774788646]
 texture = ExtResource("5_lqfom")
-
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=239995800]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-
-[node name="Panel" type="Panel" parent="CenterContainer" unique_id=463477319]
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="CenterContainer/Panel" unique_id=1875023478]
-scale = Vector2(0.8, 0.8)
+centered = false

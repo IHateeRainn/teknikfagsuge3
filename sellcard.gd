@@ -1,8 +1,8 @@
 extends Control
 class_name SellCard
 
-@onready var item_visual: Sprite2D = $CenterContainer/Panel/Sprite2D
-@export var card_frame: TextureRect
+@onready var item_visual: Sprite2D = $Panel/Sprite2D
+@export var card_frame: Panel
 @export var all_items: Inv
 @export var player_inventory: Inv
 @export var placeholder_item: InvItem
