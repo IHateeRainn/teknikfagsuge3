@@ -98,6 +98,7 @@ offset_bottom = -292.0
 scale = Vector2(3, 3)
 
 [node name="Gold" type="Control" parent="CanvasLayer" unique_id=2098270705]
+process_mode = 3
 custom_minimum_size = Vector2(100, 4)
 layout_mode = 3
 anchors_preset = 1

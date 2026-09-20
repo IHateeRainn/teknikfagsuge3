@@ -16,7 +16,6 @@ func _ready() -> void:
 	close()
 
 func _process(delta):
-	print("running")
 	if comparison_inventory != player_inventory.items:
 		print("item_bought")
 		update_slots()

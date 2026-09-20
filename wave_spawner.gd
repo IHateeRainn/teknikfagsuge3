@@ -4,6 +4,8 @@ class_name WaveSpawner
 signal level_over
 signal shop_closed
 
+var level_card_scene = preload("res://new_level_text.tscn")
+
 @export var enemy_scene: PackedScene
 @export var spawn_container: NodePath
 @export var player_node: NodePath
@@ -49,6 +51,12 @@ func _ready() -> void:
 	_start_wave()
 
 func _start_wave() -> void:
+	#big level text
+	var level_label = level_card_scene.instantiate()
+	level_label.get_node("Label").text = "level " + str(current_level)
+	
+	$"../CanvasLayer".add_child(level_label)
+	
 	shop_closed.emit()
 	print("DEBUG _start_wave called, current_level=", current_level)
 	enemies_to_spawn = _get_enemy_count_for_level(current_level)

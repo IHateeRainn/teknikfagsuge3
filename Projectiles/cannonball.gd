@@ -27,6 +27,8 @@ func _physics_process(delta: float) -> void:
 			explosion.global_position = global_position
 			explosion.scale = Vector2(0.3,0.3)
 			get_tree().current_scene.add_child(explosion)
+			
+			#hitmarker
 			var hitmarker = hitmarker_scene.instantiate()
 			hitmarker.global_position = global_position
 			hitmarker.scale = Vector2(1,1) * damage / 20
