@@ -12,7 +12,7 @@ var drag = -0.4
 
 var cannonball_speed = 200
 var base_reload_speed = 1
-var reload_speed = 0.1
+var reload_speed = 0.8
 var reloading = false
 
 var health = 100
