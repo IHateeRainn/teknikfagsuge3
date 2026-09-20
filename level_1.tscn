@@ -7,10 +7,13 @@
 [ext_resource type="Script" uid="uid://bu71doe421ssl" path="res://health_bar.gd" id="5_rka8t"]
 [ext_resource type="Texture2D" uid="uid://dvymxgfgnce48" path="res://healthbarProgress.png" id="6_bjebc"]
 [ext_resource type="PackedScene" uid="uid://dvo30lfhestkl" path="res://inventory/inv_ui.tscn" id="8_gyffv"]
+[ext_resource type="Script" uid="uid://bu7teft2ueyem" path="res://gold.gd" id="8_sof0w"]
 [ext_resource type="Script" uid="uid://bs3bp1y3bopsu" path="res://wave_spawner.gd" id="9_5rr72"]
+[ext_resource type="FontFile" uid="uid://ifg812gixvlj" path="res://inventory/Assets/Bodoni-MT.otf" id="9_ggavl"]
 [ext_resource type="Texture2D" uid="uid://dvm3ojam6g2se" path="res://kenney_pirate-pack/vignette.png" id="9_gyffv"]
 [ext_resource type="Resource" uid="uid://de0tu3qtw2v44" path="res://inventory/player_inventory.tres" id="10_1pe0h"]
 [ext_resource type="PackedScene" uid="uid://dkilyhpuilm7f" path="res://navigation_region_2d.tscn" id="10_gyffv"]
+[ext_resource type="Texture2D" uid="uid://cecve065j5lgo" path="res://kenney_pirate-pack/pixel-art-9788141_1280.webp" id="11_ggavl"]
 
 [sub_resource type="Animation" id="Animation_gyffv"]
 length = 0.001
@@ -48,6 +51,11 @@ _data = {
 &"RESET": SubResource("Animation_gyffv"),
 &"pain": SubResource("Animation_1pe0h")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_1pe0h"]
+font = ExtResource("9_ggavl")
+font_size = 28
+font_color = Color(1, 0.84313726, 0, 1)
 
 [node name="Level1" type="Node2D" unique_id=1983700188 groups=["hitable", "level", "terrain"]]
 process_mode = 1
@@ -88,6 +96,40 @@ offset_top = 130.0
 offset_right = -264.0
 offset_bottom = -292.0
 scale = Vector2(3, 3)
+
+[node name="Gold" type="Control" parent="CanvasLayer" unique_id=2098270705]
+custom_minimum_size = Vector2(100, 4)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -110.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 50.0
+grow_horizontal = 0
+script = ExtResource("8_sof0w")
+player_inventory = ExtResource("10_1pe0h")
+
+[node name="Gold_counter" type="Label" parent="CanvasLayer/Gold" unique_id=168100921]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 40.0
+text = "1000"
+label_settings = SubResource("LabelSettings_1pe0h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Gold" unique_id=2072684504]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 60.0
+offset_right = 100.0
+offset_bottom = 40.0
+texture = ExtResource("11_ggavl")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="WaveSpawner" type="Node2D" parent="." unique_id=1457523767]
 process_mode = 1
