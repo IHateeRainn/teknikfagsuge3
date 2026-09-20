@@ -6,6 +6,8 @@ var damage = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_to_group("cannonball")
+	print("Cannonball parent:", get_parent())
 	contact_monitor = true
 	max_contacts_reported = 10
 

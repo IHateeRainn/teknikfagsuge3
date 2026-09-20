@@ -21,7 +21,6 @@ var desired_rotation
 var distance = Vector2.ZERO
 var damage = 10
 
-
 func shoot():
 	if !reloading:
 		var cannonball = cannonball_scene.instantiate()
@@ -82,6 +81,7 @@ func _physics_process(delta: float) -> void:
 				self.queue_free()
 
 func _ready() -> void:
+	add_to_group("enemy")
 	contact_monitor = true
 	max_contacts_reported = 10
 	

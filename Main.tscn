@@ -5,7 +5,6 @@
 [ext_resource type="FontFile" uid="uid://ifg812gixvlj" path="res://inventory/Assets/Bodoni-MT.otf" id="3_cm0pq"]
 [ext_resource type="Script" uid="uid://cnoi711gt8r0p" path="res://death_screen.gd" id="3_r0du0"]
 [ext_resource type="Script" uid="uid://dkdrovotoqg35" path="res://shop_overlay.gd" id="5_fos0i"]
-[ext_resource type="Script" uid="uid://uy2bllybvdn0" path="res://inventory_overlay.gd" id="6_3dxm6"]
 
 [node name="Node2D" type="Node2D" unique_id=1486842758]
 
@@ -58,14 +57,8 @@ z_index = 12
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_cm0pq")
 theme_override_font_sizes/font_size = 20
-text = "Start
+text = "Start level 1
 "
-
-[node name="Shop" type="Button" parent="UI/StartMenu/VBoxContainer" unique_id=876111623]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_cm0pq")
-theme_override_font_sizes/font_size = 20
-text = "Shop"
 
 [node name="DeathScreen" type="Control" parent="UI" unique_id=1597750922]
 process_mode = 2
@@ -112,12 +105,6 @@ theme_override_fonts/font = ExtResource("3_cm0pq")
 theme_override_font_sizes/font_size = 20
 text = "Retry"
 
-[node name="Inv" type="Button" parent="UI/DeathScreen/VBoxContainer" unique_id=834449965]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_cm0pq")
-theme_override_font_sizes/font_size = 20
-text = "Inventory"
-
 [node name="quit" type="Button" parent="UI/DeathScreen/VBoxContainer" unique_id=1982749000]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
@@ -161,40 +148,6 @@ theme_override_fonts/font = ExtResource("3_cm0pq")
 theme_override_font_sizes/font_size = 20
 text = "Return to main menu"
 
-[node name="Inventory" type="Control" parent="UI" unique_id=896634204]
-process_mode = 2
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("6_3dxm6")
-
-[node name="ColorRect" type="ColorRect" parent="UI/Inventory" unique_id=1269757129]
-z_index = 10
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -688.0
-offset_top = -581.0
-offset_right = -688.0
-offset_bottom = -581.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(83.91698, 44.98657)
-color = Color(0, 0, 0, 0.7058824)
-
-[node name="Return to death" type="Button" parent="UI/Inventory" unique_id=1169276834]
-z_index = 11
-layout_mode = 0
-offset_left = 345.0
-offset_top = 210.0
-offset_right = 406.0
-offset_bottom = 238.0
-theme_override_fonts/font = ExtResource("3_cm0pq")
-text = "Return "
-
 [node name="PauseOverlay" type="Control" parent="UI" unique_id=2049742241]
 visible = false
 layout_mode = 3
@@ -203,9 +156,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [connection signal="pressed" from="UI/StartMenu/VBoxContainer/Start" to="UI/StartMenu" method="_on_start_pressed"]
-[connection signal="pressed" from="UI/StartMenu/VBoxContainer/Shop" to="UI/StartMenu" method="_on_shop_pressed"]
 [connection signal="pressed" from="UI/DeathScreen/VBoxContainer/Retry" to="UI/DeathScreen" method="_on_retry_pressed"]
-[connection signal="pressed" from="UI/DeathScreen/VBoxContainer/Inv" to="UI/DeathScreen" method="_on_inv_pressed"]
 [connection signal="pressed" from="UI/DeathScreen/VBoxContainer/quit" to="UI/DeathScreen" method="_on_quit_pressed"]
 [connection signal="pressed" from="UI/Shop/Return" to="UI/Shop" method="_on_return_pressed"]
-[connection signal="pressed" from="UI/Inventory/Return to death" to="UI/Inventory" method="_on_return_to_death_pressed"]
