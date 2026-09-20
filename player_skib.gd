@@ -7,12 +7,12 @@ signal healthChanged
 var cannonball_scene = preload("res://Projectiles/cannonball.tscn")
 
 var speed = 100
-var rSpeed = 1
+var rSpeed = 1.8
 var drag = -0.4
 
 var cannonball_speed = 200
 var base_reload_speed = 1
-var reload_speed = 1
+var reload_speed = 0.1
 var reloading = false
 
 var health = 100

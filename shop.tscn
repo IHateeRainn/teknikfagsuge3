@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dqmgkapdnrmym" path="res://inventory/Assets/Shop Board.png" id="4_fgaav"]
 
 [node name="shop_scene" type="Control" unique_id=877518023 node_paths=PackedStringArray("card_container")]
+process_mode = 3
 custom_minimum_size = Vector2(400, 200)
 layout_mode = 3
 anchors_preset = 0
@@ -28,3 +29,13 @@ offset_left = 166.0
 offset_top = 143.0
 offset_right = 680.0
 offset_bottom = 381.0
+
+[node name="Button" type="Button" parent="." unique_id=1929555291]
+layout_mode = 0
+offset_left = 396.0
+offset_top = 438.0
+offset_right = 458.0
+offset_bottom = 469.0
+text = "Return"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

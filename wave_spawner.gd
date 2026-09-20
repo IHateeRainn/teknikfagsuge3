@@ -1,6 +1,9 @@
 extends Node2D
 class_name WaveSpawner
 
+signal level_over
+signal shop_closed
+
 @export var enemy_scene: PackedScene
 @export var spawn_container: NodePath
 @export var player_node: NodePath
@@ -20,15 +23,23 @@ class_name WaveSpawner
 
 @export var spawn_margin: float = 50.0
 
-
 var current_level: int = 1
 var enemies_alive: int = 1
 var enemies_to_spawn: int = 0
+
+var shop_open = false
 
 @onready var _spawn_timer: Timer = $SpawnTimer
 @onready var _pause_timer: Timer = $PauseTimer
 
 @export var player_inventory: Inv
+
+var shop_scene = preload("res://shop.tscn")
+
+func _process(delta):
+	if shop_open:
+		shop_closed.emit()
+		shop_open = false
 
 func _ready() -> void:
 	_spawn_timer.timeout.connect(_on_spawn_timer_timeout)
@@ -38,6 +49,7 @@ func _ready() -> void:
 	_start_wave()
 
 func _start_wave() -> void:
+	shop_closed.emit()
 	print("DEBUG _start_wave called, current_level=", current_level)
 	enemies_to_spawn = _get_enemy_count_for_level(current_level)
 	enemies_alive = 0
@@ -85,11 +97,19 @@ func _on_enemy_died() -> void:
 	enemies_alive -= 1
 	print("DEBUG enemy died, enemies_alive=", enemies_alive, " enemies_to_spawn=", enemies_to_spawn)
 	if enemies_alive <= 0 and enemies_to_spawn <= 0:
+		var shop = shop_scene.instantiate()
+		$"../CanvasLayer".add_child(shop)
+		shop_open = true
+		level_over.emit()
+		
+		get_tree().paused = true
+		
+		$"../player_skib".health = $"../player_skib".max_health
 		print("DEBUG wave cleared! starting pause timer, wait_time=", wave_pause_duration)
 		current_level += 1
 		_pause_timer.wait_time = wave_pause_duration
 		_pause_timer.start()
-		
+
 func _get_random_edge_position() -> Vector2:
 	var viewport := get_viewport()
 	var rect := viewport.get_visible_rect()

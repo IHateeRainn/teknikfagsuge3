@@ -4,10 +4,11 @@ extends Control
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 @export var player_inventory: Inv
 
+var comparison_inventory: Array[InvItem]
 var is_open = false
 
 func _ready() -> void:
-	
+	comparison_inventory = player_inventory.items.duplicate()
 	for slot in slots:
 		slot.item_clicked.connect(_on_item_clicked)
 	
@@ -15,6 +16,12 @@ func _ready() -> void:
 	close()
 
 func _process(delta):
+	print("running")
+	if comparison_inventory != player_inventory.items:
+		print("item_bought")
+		update_slots()
+		comparison_inventory = player_inventory.items.duplicate()
+	
 	if Input.is_action_just_pressed("i"):
 		update_slots()
 		if is_open:
@@ -41,3 +48,16 @@ func _on_item_clicked(item: InvItem):
 		print(player_inventory.gold)
 		inv.items.remove_at(index)
 		update_slots()
+
+
+func _on_wave_spawner_level_over() -> void:
+	print("level over signal")
+	update_slots()
+	open()
+
+
+
+func _on_wave_spawner_shop_closed() -> void:
+	print("shop closed signal")
+	update_slots()
+	close()
