@@ -45,7 +45,6 @@ func _on_item_clicked(item: InvItem):
 	var index := inv.items.find(item)
 	if index != -1:
 		player_inventory.gold += player_inventory.items[index].cost*0.5
-		print(player_inventory.gold)
 		inv.items.remove_at(index)
 		update_slots()
 
