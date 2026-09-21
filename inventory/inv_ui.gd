@@ -59,3 +59,4 @@ func _on_wave_spawner_shop_closed() -> void:
 	print("shop closed signal")
 	update_slots()
 	close()
+	$"../../player_skib".health = $"../../player_skib".max_health

@@ -10,8 +10,8 @@ var speed = 100
 var rSpeed = 1.8
 var drag = -0.4
 
-var cannonball_speed = 200
-var base_reload_speed = 1
+var cannonball_speed = 350
+var base_reload_speed = 0.8
 var reload_speed = 0.8
 var reloading = false
 
@@ -87,3 +87,8 @@ func _physics_process(delta: float) -> void:
 	if comparison_items != player_inventory.items:
 		inventory_changed()
 		comparison_items = player_inventory.items.duplicate()
+
+
+func _on_wave_spawner_shop_closed() -> void:
+	health = max_health
+	pass # Replace with function body.

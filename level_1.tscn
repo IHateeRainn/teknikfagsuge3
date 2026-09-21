@@ -134,6 +134,7 @@ stretch_mode = 4
 
 [node name="WaveSpawner" type="Node2D" parent="." unique_id=1457523767]
 process_mode = 1
+visible = false
 script = ExtResource("9_5rr72")
 enemy_scene = ExtResource("4_ihfcg")
 player_node = NodePath("../player_skib")
@@ -147,4 +148,5 @@ player_inventory = ExtResource("10_1pe0h")
 [node name="NavigationRegion2D" parent="." unique_id=1982912594 instance=ExtResource("10_gyffv")]
 
 [connection signal="level_over" from="WaveSpawner" to="CanvasLayer/Inv_Ui" method="_on_wave_spawner_level_over"]
+[connection signal="shop_closed" from="WaveSpawner" to="player_skib" method="_on_wave_spawner_shop_closed"]
 [connection signal="shop_closed" from="WaveSpawner" to="CanvasLayer/Inv_Ui" method="_on_wave_spawner_shop_closed"]

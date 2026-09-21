@@ -38,7 +38,7 @@ func _input(event) -> void:
 	#Detects if mouse is hovering and clicks
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed and hovering:
-			if player_inventory.gold > random_item.cost:
+			if player_inventory.gold >= random_item.cost:
 				for i in player_inventory.items.size():
 					if player_inventory.items[i] == placeholder_item:
 						player_inventory.items[i] = random_item

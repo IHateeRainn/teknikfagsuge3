@@ -20,7 +20,7 @@ func _on_retry_pressed():
 		player.health = player.max_health
 	
 	for ball in get_tree().get_nodes_in_group("cannonball"):
-		ball.call_deferred("free")
+		ball.queue_free()
 		
 	for e in get_tree().get_nodes_in_group("explosion"):
 			e.call_deferred("free")
