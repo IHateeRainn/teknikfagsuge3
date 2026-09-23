@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://j7my4rh52u3m"]
 
-[ext_resource type="Script" uid="uid://ddi35iqf48tr5" path="res://inventory/inventory_item.gd" id="1_a0iin"]
+[ext_resource type="Script" uid="uid://ddi35iqf48tr5" path="res://inventory/Inventory_item.gd" id="1_a0iin"]
 [ext_resource type="Texture2D" uid="uid://ch74qftcvj2g7" path="res://inventory/Assets/Blackbeard small.png" id="2_a0iin"]
 
 [resource]
@@ -10,3 +10,4 @@ texture = ExtResource("2_a0iin")
 cost = 40.0
 description = "+30% crit chance"
 crit_chance = 30.0
+metadata/_custom_type_script = "uid://wvtegv56n16g"
