@@ -94,8 +94,7 @@ func _spawn_enemy() -> void:
 	enemy.damage *= pow(damage_growth, level_mult)
 	get_tree().current_scene.add_child(enemy)
 	
-	if enemies_to_spawn != _get_enemy_count_for_level(current_level):
-		enemies_alive += 1
+	enemies_alive += 1
 	enemy.tree_exited.connect(_on_enemy_died, CONNECT_ONE_SHOT)
 	print("DEBUG spawned enemy, enemies_alive=", enemies_alive, " enemies_to_spawn=", enemies_to_spawn)
 
@@ -112,7 +111,6 @@ func _on_enemy_died() -> void:
 		
 		get_tree().paused = true
 		
-		$"../player_skib".health = $"../player_skib".max_health
 		print("DEBUG wave cleared! starting pause timer, wait_time=", wave_pause_duration)
 		current_level += 1
 		_pause_timer.wait_time = wave_pause_duration

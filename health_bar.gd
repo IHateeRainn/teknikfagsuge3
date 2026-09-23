@@ -7,5 +7,6 @@ func _ready():
 	update()
 
 func update():
-	value = player.health * 100 / player.max_health
 	max_value = player.max_health
+	value = player.health
+	
