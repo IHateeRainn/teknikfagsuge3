@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_ry6gx")
 item_name = "placeholder"
-metadata/_custom_type_script = "uid://wvtegv56n16g"
+attack_speed_boost = 1.0

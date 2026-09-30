@@ -9,5 +9,5 @@ item_name = "side_shot"
 texture = ExtResource("2_dtod8")
 cost = 80.0
 description = "Shoot cannonballs from both sides"
+attack_speed_boost = 1.0
 sideshot = 1.0
-metadata/_custom_type_script = "uid://wvtegv56n16g"

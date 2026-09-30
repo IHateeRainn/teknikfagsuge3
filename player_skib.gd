@@ -11,13 +11,13 @@ var rSpeed = 1.8
 var drag = -0.4
 
 var cannonball_speed = 350
-var base_reload_speed = 0.8
-var reload_speed = 0.8
+var base_reload_speed = 0.6
+var reload_speed = 0.6
 var reloading = false
 
-var health = 100
-var max_health = 100
-var base_health = 100
+var health = 200
+var max_health = 200
+var base_health = 200
 
 var sideshot = 0
 var comparison_items = []
@@ -56,8 +56,9 @@ func inventory_changed():
 	reload_speed = base_reload_speed
 	for i in player_inventory.items:
 		max_health += i.health_boost
-		reload_speed -= i.attack_speed_boost
+		reload_speed *= i.attack_speed_boost
 	health = max_health
+	print(max_health)
 
 func _physics_process(delta: float) -> void:
 	#drag

@@ -10,4 +10,4 @@ texture = ExtResource("2_or46f")
 cost = 70.0
 description = "Makes your cannonballs bounce of the terrain"
 can_richochet = 1.0
-metadata/_custom_type_script = "uid://wvtegv56n16g"
+attack_speed_boost = 1.0

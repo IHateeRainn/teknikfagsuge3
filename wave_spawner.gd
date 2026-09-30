@@ -12,7 +12,7 @@ var level_card_scene = preload("res://new_level_text.tscn")
 @export var level_node: NodePath
 
 #Wave sizing bliver så: base * growth ^(level - 1)
-@export var base_enemy_count: int = 5
+@export var base_enemy_count: int = 4
 @export var enemy_count_growth: float = 1.2
 
 #Tid
@@ -51,6 +51,9 @@ func _ready() -> void:
 	_start_wave()
 
 func _start_wave() -> void:
+	
+	var spawn_interval = 20 / _get_enemy_count_for_level(current_level)
+	
 	#big level text
 	var level_label = level_card_scene.instantiate()
 	level_label.get_node("Label").text = "level " + str(current_level)

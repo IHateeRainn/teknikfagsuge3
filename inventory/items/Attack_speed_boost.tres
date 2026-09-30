@@ -9,5 +9,4 @@ item_name = "Attack_speed_boost"
 texture = ExtResource("2_mb2cb")
 cost = 40.0
 description = "shoot faster"
-attack_speed_boost = 0.3
-metadata/_custom_type_script = "uid://wvtegv56n16g"
+attack_speed_boost = 0.7

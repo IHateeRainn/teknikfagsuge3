@@ -39,10 +39,11 @@ func _input(event) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed and hovering:
 			if player_inventory.gold >= random_item.cost:
-				for i in player_inventory.items.size():
-					if player_inventory.items[i] == placeholder_item:
-						player_inventory.items[i] = random_item
-						break
-				player_inventory.gold -= random_item.cost
-				print(player_inventory.gold)
-				self.queue_free()
+				if player_inventory.items.has(placeholder_item):
+					for i in player_inventory.items.size():
+						if player_inventory.items[i] == placeholder_item:
+							player_inventory.items[i] = random_item
+							break
+					player_inventory.gold -= random_item.cost
+					print(player_inventory.gold)
+					self.queue_free()

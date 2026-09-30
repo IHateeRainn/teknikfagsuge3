@@ -10,3 +10,4 @@ texture = ExtResource("2_loams")
 cost = 40.0
 description = "+100 health"
 health_boost = 100.0
+attack_speed_boost = 1.0

@@ -8,5 +8,4 @@
 resource_name = "player_inventory"
 script = ExtResource("2_celxr")
 items = Array[ExtResource("1_ptr4k")]([ExtResource("3_fi1x0"), ExtResource("3_fi1x0"), ExtResource("3_fi1x0"), ExtResource("3_fi1x0"), ExtResource("3_fi1x0"), ExtResource("3_fi1x0")])
-gold = 100.0
 metadata/_custom_type_script = "uid://bjybjynyiwxbv"

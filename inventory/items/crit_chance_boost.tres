@@ -9,4 +9,5 @@ item_name = "crit_chance"
 texture = ExtResource("2_a0iin")
 cost = 40.0
 description = "+30% crit chance"
+attack_speed_boost = 1.0
 crit_chance = 30.0
