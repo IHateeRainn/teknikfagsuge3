@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://bfs5k3321sp76"]
 
-[ext_resource type="Script" uid="uid://ddi35iqf48tr5" path="res://inventory/Inventory_item.gd" id="2_lrifb"]
+[ext_resource type="Script" uid="uid://ddi35iqf48tr5" path="res://inventory/inventory_item.gd" id="2_lrifb"]
 [ext_resource type="Texture2D" uid="uid://b4v5vb4hdd4dr" path="res://inventory/Assets/Jack_small.png" id="2_or46f"]
 
 [resource]
@@ -10,4 +10,15 @@ texture = ExtResource("2_or46f")
 cost = 70.0
 description = "Makes your cannonballs bounce of the terrain"
 can_richochet = 1.0
+damage_boost = null
+health_boost = null
 attack_speed_boost = 1.0
+crit_chance = null
+movement_speed_boost = null
+backwards_movement = null
+dissipating_crit = null
+multishot = null
+sideshot = null
+big_explosive_cannonball = null
+giant_bomb = null
+shield = null

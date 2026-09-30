@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://bl54plya0wie1"]
+
+[ext_resource type="Script" uid="uid://ddi35iqf48tr5" path="res://inventory/inventory_item.gd" id="1_6y85i"]
+[ext_resource type="Texture2D" uid="uid://buoglba2j1gx" path="res://inventory/Assets/Davy Jones small.png" id="2_8xhjs"]
+
+[resource]
+script = ExtResource("1_6y85i")
+item_name = "big cannonball"
+texture = ExtResource("2_8xhjs")
+cost = 150.0
+description = "Increases cannonball size, increases damage with lower attack speed, decreases attack speed"
+attack_speed_boost = 2.0
+big_explosive_cannonball = 1.0
+metadata/_custom_type_script = "uid://ddi35iqf48tr5"

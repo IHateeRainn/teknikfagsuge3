@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://ct1xbh8q1ufhe"]
 
-[ext_resource type="Script" uid="uid://ddi35iqf48tr5" path="res://inventory/Inventory_item.gd" id="1_v3vyk"]
+[ext_resource type="Script" uid="uid://ddi35iqf48tr5" path="res://inventory/inventory_item.gd" id="1_v3vyk"]
 [ext_resource type="Texture2D" uid="uid://b4v5vb4hdd4dr" path="res://inventory/Assets/Jack_small.png" id="2_dtod8"]
 
 [resource]
@@ -9,5 +9,16 @@ item_name = "side_shot"
 texture = ExtResource("2_dtod8")
 cost = 80.0
 description = "Shoot cannonballs from both sides"
+can_richochet = null
+damage_boost = null
+health_boost = null
 attack_speed_boost = 1.0
+crit_chance = null
+movement_speed_boost = null
+backwards_movement = null
+dissipating_crit = null
+multishot = null
 sideshot = 1.0
+big_explosive_cannonball = null
+giant_bomb = null
+shield = null

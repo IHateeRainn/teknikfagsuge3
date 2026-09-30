@@ -18,6 +18,8 @@ extends Resource
 @export var dissipating_crit: float
 @export var multishot: float
 @export var sideshot: float
+@export var big_explosive_cannonball: float
+@export var AOE_explosion: float
 
 @export_category("ability")
 @export var giant_bomb: float

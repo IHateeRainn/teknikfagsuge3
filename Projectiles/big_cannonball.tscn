@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c0qpstr18wtdt"]
+
+[ext_resource type="Script" uid="uid://wb6fr2dr15xu" path="res://big_cannonball.gd" id="1_hsy13"]
+[ext_resource type="Texture2D" uid="uid://60ottfl0u2hn" path="res://kenney_pirate-pack/PNG/Default size/Ship parts/cannonBall.png" id="2_shg33"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rq2k3"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rq2k3"]
+radius = 5.0990195
+
+[node name="big_cannonball" type="RigidBody2D" unique_id=221128626 groups=["cannonball"]]
+modulate = Color(2.5276513, 2.5691063, 0, 1)
+collision_layer = 2
+collision_mask = 5
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_rq2k3")
+gravity_scale = 0.0
+script = ExtResource("1_hsy13")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=696875006]
+scale = Vector2(2, 2)
+texture = ExtResource("2_shg33")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=254072800]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_rq2k3")

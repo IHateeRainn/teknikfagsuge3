@@ -5,6 +5,7 @@ extends RigidBody2D
 signal healthChanged
 
 var cannonball_scene = preload("res://Projectiles/cannonball.tscn")
+var big_cannonball_scene = preload("res://Projectiles/big_cannonball.tscn")
 
 var speed = 100
 var rSpeed = 1.8
@@ -20,6 +21,8 @@ var max_health = 200
 var base_health = 200
 
 var sideshot = 0
+var big_explosive_cannonball = 0
+
 var comparison_items = []
 
 @onready var anim = $"../CanvasLayer/pain/AnimationPlayer"
@@ -30,6 +33,19 @@ func _ready() -> void:
 	max_contacts_reported = 10
 
 func fire_cannonball(direction):
+	if big_explosive_cannonball > 0:
+		var big_cannonball = big_cannonball_scene.instantiate()
+		for i in player_inventory.items:
+			big_cannonball.can_richochet += i.can_richochet
+			big_cannonball.damage += i.damage_boost
+			big_cannonball.crit_chance += i.crit_chance
+			sideshot += i.sideshot
+		big_cannonball.damage += 40 * reload_speed
+		big_cannonball.global_position = position
+		big_cannonball.rotation = rotation+deg_to_rad(90)
+		big_cannonball.linear_velocity = direction*Vector2.UP.rotated(big_cannonball.rotation)*cannonball_speed+linear_velocity
+		get_tree().current_scene.add_child(big_cannonball)
+	else:
 		var cannonball = cannonball_scene.instantiate()
 		for i in player_inventory.items:
 			cannonball.can_richochet += i.can_richochet
@@ -54,9 +70,11 @@ func shoot():
 func inventory_changed():
 	max_health = base_health
 	reload_speed = base_reload_speed
+	big_explosive_cannonball = 0
 	for i in player_inventory.items:
 		max_health += i.health_boost
-		reload_speed *= i.attack_speed_boost
+		reload_speed = reload_speed * i.attack_speed_boost
+		big_explosive_cannonball += i.big_explosive_cannonball
 	health = max_health
 	print(max_health)
 
