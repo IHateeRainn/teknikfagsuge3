@@ -113,3 +113,4 @@ func _physics_process(delta: float) -> void:
 func _on_wave_spawner_shop_closed() -> void:
 	health = max_health
 	pass # Replace with function body.
+#hej
