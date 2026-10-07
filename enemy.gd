@@ -25,7 +25,7 @@ var damage = 10
 var fire_stacks = 0
 var fire_damage = 5
 var fire_duration = 2
-var fire_tick_speed = 0.2
+var fire_tick_speed = 0.3
 var between_fire_tick = false
 
 func shoot():
@@ -91,9 +91,9 @@ func _ready() -> void:
 
 func when_on_fire():
 	if !between_fire_tick:
-		print("ouch")
-		health -= fire_damage
-		health_changed(fire_damage)
+		var damage_per_tick = fire_damage * fire_stacks
+		health -= damage_per_tick
+		health_changed(damage_per_tick)
 		between_fire_tick = true
 		await get_tree().create_timer(fire_tick_speed).timeout
 		between_fire_tick = false
@@ -118,10 +118,14 @@ func gasoline_explosion():
 	var gasoline = gasoline_scene.instantiate()
 	gasoline.global_position = global_position
 	get_tree().current_scene.add_child(gasoline)
-	await get_tree().create_timer(0.1).timeout
-	gasoline.queue_free()
 
 #opdater path
 func _on_timer_timeout() -> void:
 	navigation_agent.target_position = player_skib.global_position
 	pass # Replace with function body.
+
+func add_fire_stack():
+	fire_stacks += 1
+	await get_tree().create_timer(fire_duration).timeout
+	if is_inside_tree() and fire_stacks > 0:
+		fire_stacks -= 1

@@ -6,7 +6,7 @@ class_name SellCard
 @export var all_items: Inv
 @export var player_inventory: Inv
 @export var placeholder_item: InvItem
-@onready var player = $player_skib
+@onready var player = get_tree().get_first_node_in_group("player")
 @onready var description_label: Label = $PanelContainer/Label
 @onready var cost_label: Label = $cost
 

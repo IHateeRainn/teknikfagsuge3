@@ -40,14 +40,16 @@ var shop_scene = preload("res://shop.tscn")
 
 func _process(delta):
 	if shop_open:
-		shop_closed.emit()
 		shop_open = false
+		shop_closed.emit()
+
 
 func _ready() -> void:
 	_spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	_pause_timer.one_shot = true
 	_pause_timer.timeout.connect(_start_wave)
 	
+	await get_tree().physics_frame
 	_start_wave()
 
 func _start_wave() -> void:
@@ -66,7 +68,6 @@ func _start_wave() -> void:
 	
 	_spawn_timer.wait_time = spawn_interval
 	_spawn_timer.start()
-	_on_spawn_timer_timeout()
 
 func _get_enemy_count_for_level(level: int) -> int:
 	return int(round(base_enemy_count * pow(enemy_count_growth, level - 1)))
@@ -79,11 +80,11 @@ func _on_spawn_timer_timeout() -> void:
 	enemies_to_spawn -= 1
 	if enemies_to_spawn <= 0:
 		_spawn_timer.stop()
-		
+
 func _spawn_enemy() -> void:
 	var level_mult = current_level -1
 	var enemy:= enemy_scene.instantiate()
-
+	
 	var raw_pos = _get_random_edge_position()
 	
 	var map_rid = get_world_2d().navigation_map
@@ -98,11 +99,10 @@ func _spawn_enemy() -> void:
 	enemies_alive += 1
 	enemy.tree_exited.connect(_on_enemy_died, CONNECT_ONE_SHOT)
 
-
-
 func _on_enemy_died() -> void:
 	player_inventory.gold += 10
 	enemies_alive -= 1
+	
 	if enemies_alive <= 0 and enemies_to_spawn <= 0:
 		var shop = shop_scene.instantiate()
 		$"../CanvasLayer".add_child(shop)
@@ -114,6 +114,7 @@ func _on_enemy_died() -> void:
 		current_level += 1
 		_pause_timer.wait_time = wave_pause_duration
 		_pause_timer.start()
+
 
 func _get_random_edge_position() -> Vector2:
 	var viewport := get_viewport()
