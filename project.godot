@@ -36,6 +36,7 @@ enemy=""
 enemy_cannonball=""
 terrain=""
 level=""
+gasoline=""
 
 [input]
 

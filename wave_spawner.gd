@@ -61,10 +61,8 @@ func _start_wave() -> void:
 	$"../CanvasLayer".add_child(level_label)
 	
 	shop_closed.emit()
-	print("DEBUG _start_wave called, current_level=", current_level)
 	enemies_to_spawn = _get_enemy_count_for_level(current_level)
 	enemies_alive = 0
-	print(_get_enemy_count_for_level(current_level))
 	
 	_spawn_timer.wait_time = spawn_interval
 	_spawn_timer.start()
@@ -99,13 +97,12 @@ func _spawn_enemy() -> void:
 	
 	enemies_alive += 1
 	enemy.tree_exited.connect(_on_enemy_died, CONNECT_ONE_SHOT)
-	print("DEBUG spawned enemy, enemies_alive=", enemies_alive, " enemies_to_spawn=", enemies_to_spawn)
+
 
 
 func _on_enemy_died() -> void:
 	player_inventory.gold += 10
 	enemies_alive -= 1
-	print("DEBUG enemy died, enemies_alive=", enemies_alive, " enemies_to_spawn=", enemies_to_spawn)
 	if enemies_alive <= 0 and enemies_to_spawn <= 0:
 		var shop = shop_scene.instantiate()
 		$"../CanvasLayer".add_child(shop)
@@ -114,7 +111,6 @@ func _on_enemy_died() -> void:
 		
 		get_tree().paused = true
 		
-		print("DEBUG wave cleared! starting pause timer, wait_time=", wave_pause_duration)
 		current_level += 1
 		_pause_timer.wait_time = wave_pause_duration
 		_pause_timer.start()

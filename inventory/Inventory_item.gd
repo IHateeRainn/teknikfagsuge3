@@ -19,7 +19,7 @@ extends Resource
 @export var multishot: float
 @export var sideshot: float
 @export var big_explosive_cannonball: float
-@export var AOE_explosion: float
+@export var gasoline: float
 
 @export_category("ability")
 @export var giant_bomb: float

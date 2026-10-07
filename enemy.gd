@@ -5,7 +5,8 @@ extends RigidBody2D
 
 var explosion_scene = preload("res://Projectiles/animated_sprite_2d.tscn")
 var cannonball_scene = preload("res://Projectiles/enemy_cannonball.tscn")
-
+var gasoline_scene = preload("res://gasoline.tscn")
+var hitmarker_scene = preload("res://Projectiles/hitmarker.tscn")
 
 var health = 100
 var shoot_range = 200
@@ -21,10 +22,15 @@ var desired_rotation
 var distance = Vector2.ZERO
 var damage = 10
 
+var fire_stacks = 0
+var fire_damage = 5
+var fire_duration = 2
+var fire_tick_speed = 0.2
+var between_fire_tick = false
+
 func shoot():
 	if !reloading:
 		var cannonball = cannonball_scene.instantiate()
-
 		cannonball.global_position = position
 		cannonball.damage = damage
 		get_tree().current_scene.add_child(cannonball)
@@ -35,6 +41,9 @@ func shoot():
 		reloading = false
 
 func _physics_process(delta: float) -> void:
+	if fire_stacks > 0:
+		when_on_fire()
+	
 	var forward = Vector2.UP.rotated(rotation)
 	distance = player_skib.global_position - global_position
 	
@@ -73,20 +82,44 @@ func _physics_process(delta: float) -> void:
 	for body in get_colliding_bodies():
 		if body.is_in_group("cannonball"):
 			health -= body.damage
-			if health <= 0:
-				var explosion = explosion_scene.instantiate()
-				explosion.global_position = global_position
-				explosion.scale = Vector2(1,1)
-				get_tree().current_scene.add_child(explosion)
-				self.queue_free()
+			health_changed(body.damage)
 
 func _ready() -> void:
 	add_to_group("enemy")
 	contact_monitor = true
 	max_contacts_reported = 10
+
+func when_on_fire():
+	if !between_fire_tick:
+		print("ouch")
+		health -= fire_damage
+		health_changed(fire_damage)
+		between_fire_tick = true
+		await get_tree().create_timer(fire_tick_speed).timeout
+		between_fire_tick = false
+
+func health_changed(damage):
+	var hitmarker = hitmarker_scene.instantiate()
+	hitmarker.get_node("Label").text = str(damage)
+	hitmarker.global_position = global_position
+	get_tree().current_scene.add_child(hitmarker)
 	
-	print("Enemy path: ", get_path())
-	print("Player: ", player_skib)
+	if health <= 0:
+		if player_skib.gasoline_item > 0:
+			gasoline_explosion()
+			print("GAS")
+		var explosion = explosion_scene.instantiate()
+		explosion.global_position = global_position
+		explosion.scale = Vector2(1,1)
+		get_tree().current_scene.add_child(explosion)
+		self.queue_free()
+
+func gasoline_explosion():
+	var gasoline = gasoline_scene.instantiate()
+	gasoline.global_position = global_position
+	get_tree().current_scene.add_child(gasoline)
+	await get_tree().create_timer(0.1).timeout
+	gasoline.queue_free()
 
 #opdater path
 func _on_timer_timeout() -> void:
