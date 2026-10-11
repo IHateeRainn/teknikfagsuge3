@@ -3,6 +3,7 @@ extends RigidBody2D
 @onready var navigation_agent: NavigationAgent2D = $navigation/NavigationAgent2D
 @onready var level_1 = get_tree().get_first_node_in_group("level")
 
+
 var explosion_scene = preload("res://Projectiles/animated_sprite_2d.tscn")
 var cannonball_scene = preload("res://Projectiles/enemy_cannonball.tscn")
 var gasoline_scene = preload("res://gasoline.tscn")
@@ -24,7 +25,7 @@ var damage = 10
 
 var fire_stacks = 0
 var fire_damage = 5
-var fire_duration = 2
+var fire_duration = 3
 var fire_tick_speed = 0.3
 var between_fire_tick = false
 
@@ -43,7 +44,8 @@ func shoot():
 func _physics_process(delta: float) -> void:
 	if fire_stacks > 0:
 		when_on_fire()
-	
+	else:
+		$fire_animation.visible = false
 	var forward = Vector2.UP.rotated(rotation)
 	distance = player_skib.global_position - global_position
 	
@@ -90,6 +92,7 @@ func _ready() -> void:
 	max_contacts_reported = 10
 
 func when_on_fire():
+	$fire_animation.visible = true
 	if !between_fire_tick:
 		var damage_per_tick = fire_damage * fire_stacks
 		health -= damage_per_tick
@@ -107,7 +110,6 @@ func health_changed(damage):
 	if health <= 0:
 		if player_skib.gasoline_item > 0:
 			gasoline_explosion()
-			print("GAS")
 		var explosion = explosion_scene.instantiate()
 		explosion.global_position = global_position
 		explosion.scale = Vector2(1,1)
