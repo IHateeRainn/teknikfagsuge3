@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d2uyl2y4wh8qi" path="res://enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://c7sttybgf3vka" path="res://kenney_pirate-pack/PNG/Default size/Ships/ship (3).png" id="1_7k104"]
+[ext_resource type="PackedScene" uid="uid://clyn4juaoiau8" path="res://fire_particles.tscn" id="3_qi2p4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hn12h"]
 bounce = 0.5
@@ -32,5 +33,7 @@ shape = SubResource("CapsuleShape2D_rq2k3")
 [node name="Timer" type="Timer" parent="navigation" unique_id=2089196419]
 wait_time = 0.1
 autostart = true
+
+[node name="fire_particles" parent="." unique_id=365620581 instance=ExtResource("3_qi2p4")]
 
 [connection signal="timeout" from="navigation/Timer" to="." method="_on_timer_timeout"]

@@ -23,8 +23,8 @@ var distance = Vector2.ZERO
 var damage = 10
 
 var fire_stacks = 0
-var fire_damage = 5
-var fire_duration = 2
+var fire_damage = 3
+var fire_duration = 4
 var fire_tick_speed = 0.3
 var between_fire_tick = false
 
@@ -43,6 +43,8 @@ func shoot():
 func _physics_process(delta: float) -> void:
 	if fire_stacks > 0:
 		when_on_fire()
+	else:
+		$fire_particles.emitting = false
 	
 	var forward = Vector2.UP.rotated(rotation)
 	distance = player_skib.global_position - global_position
@@ -90,6 +92,7 @@ func _ready() -> void:
 	max_contacts_reported = 10
 
 func when_on_fire():
+	$fire_particles.emitting = true
 	if !between_fire_tick:
 		var damage_per_tick = fire_damage * fire_stacks
 		health -= damage_per_tick
