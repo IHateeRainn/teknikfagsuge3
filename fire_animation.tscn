@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ccq2se04xbuqa"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y3o14"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 20.0
+spread = 180.0
+initial_velocity_min = -20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, -100, 0)
+linear_accel_min = -50.0
+linear_accel_max = -2.2351742e-06
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = -2.2351742e-06
+scale_min = 1.1999999
+scale_max = 2.0
+turbulence_noise_scale = 17.07
+
+[node name="fire_animation" type="GPUParticles2D" unique_id=620396141]
+modulate = Color(1, 0.65, 0, 1)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_y3o14")
